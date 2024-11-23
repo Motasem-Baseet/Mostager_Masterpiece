@@ -19,15 +19,28 @@ class usersController extends Controller
     }
 
     public function update(Request $request, $user_id){
-        $data = $request->validated();
+
         $users = User::find($user_id);
+        if($users){
+            $users->name = $request->name;
+            $users->email = $request->email;
+            // $users->phone = $request->phone;
+            // $users->address = $request->address;
+            $users->role_as = $request->role_as;
 
-        $users->name = $data['name'];
-        $users->name = $data['email'];
-
-        $users->update();
-
+            $users->update();
+        }
         return redirect('admin/users')->with('message' , 'user updated');
+    }
+
+    public function delete($user_id){
+        $users = User::find($user_id);
+        if($user_id){
+            $users->delete();
+            return redirect('admin/users')->with('message' , 'User Deleted');
+        }else{
+            return redirect('admin/users')->with('message' , 'ID Not Found');
+        }
 
 
     }

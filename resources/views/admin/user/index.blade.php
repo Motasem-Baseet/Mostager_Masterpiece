@@ -11,7 +11,7 @@
 <div class="card mt-4">
     <div class="card-header">
         <h4>View Users</h4>
-            <a href="{{'add-category'}}" class="btn btn-primary btn-sm float-end">Add Category</a>
+
 
     </div>
     <div class="card body">
@@ -31,6 +31,7 @@
         <td>Phone Number</td>
         <td>Role</td>
         <td>Edit</td>
+        <td>Delete</td>
     </tr>
 </thead>
     <tbody>
@@ -43,7 +44,7 @@
             <td>{{ $item->phone }}</td>
             <td>{{ $item->role_as == '1' ? 'Admin':'User' }}</td>
             <td><a href="{{ url('admin/users/'.$item->id)}}" class="btn btn-success">Edit</a></td>
-            <td><a href="{{ url('admin/users/'.$item->id)}}" class="btn btn-danger">Delete</a></td>
+            <td><a href="{{ url('admin/delete-user/'.$item->id)}}" class="btn btn-danger">Delete</a></td>
         </tr>
         @endforeach
     </tbody>

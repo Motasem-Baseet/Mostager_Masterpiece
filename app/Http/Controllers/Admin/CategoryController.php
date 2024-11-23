@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\admin\CategoryFormRequest;
 use App\Models\Category;
+use Illuminate\Http\Request;
+
 
 class CategoryController extends Controller
 {
     public function index()
     {
         $category = Category::all();
+        $categories = Category::paginate(10);
         return view('admin.category.index', compact('category'));
     }
 

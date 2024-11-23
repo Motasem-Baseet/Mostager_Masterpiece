@@ -42,9 +42,10 @@
                             </div>
                             <div class="mb-3">
                                 <label for="">Role</label>
-                                <select name="" id="">
+                                <select name="role_as" id="">
+                                    <option value="{{ $users->role_as}}">Current Role </option>
                                     <option value="1" {{ $users->role_as == '1' ? 'selected':''}}>Admin</option>
-                                    <option value="0">User</option>
+                                    <option value="0" {{ $users->role_as == '1' ? 'selected':''}}>User</option>
                                 </select>
                             </div>
 
