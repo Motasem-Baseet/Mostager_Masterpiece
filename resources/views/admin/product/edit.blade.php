@@ -5,16 +5,16 @@
 @endsection
 
 @section('content')
-<div class="container-fluid px-4">
+<div class="container-fluid py-4">
 
-    <!-- Header Section -->
+    <!-- Page Header -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Edit Product</h1>
+        <h1 class="text-primary">Edit Product</h1>
     </div>
 
     <!-- Edit Product Form -->
-    <div class="card shadow-sm rounded">
-        <div class="card-body">
+    <div class="card shadow-lg border-0 rounded">
+        <div class="card-body p-4">
 
             <!-- Form Start -->
             <form action="{{ route('admin.product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
@@ -23,14 +23,14 @@
 
                 <!-- Product Name -->
                 <div class="form-group mb-3">
-                    <label for="name">Product Name</label>
+                    <label for="name" class="form-label">Product Name</label>
                     <input type="text" class="form-control" id="name" name="name" value="{{ $product->name }}" required>
                 </div>
 
                 <!-- Category Selection -->
                 <div class="form-group mb-3">
-                    <label for="category_id">Category</label>
-                    <select class="form-control" id="category_id" name="category_id" required>
+                    <label for="category_id" class="form-label">Category</label>
+                    <select class="form-select" id="category_id" name="category_id" required>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>
                                 {{ $category->name }}
@@ -41,20 +41,20 @@
 
                 <!-- Product Description -->
                 <div class="form-group mb-3">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="description" name="description" required>{{ $product->description }}</textarea>
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" id="description" name="description" rows="4" required>{{ $product->description }}</textarea>
                 </div>
 
                 <!-- Price per Day -->
                 <div class="form-group mb-3">
-                    <label for="price_per_day">Price per Day</label>
+                    <label for="price_per_day" class="form-label">Price per Day</label>
                     <input type="number" class="form-control" id="price_per_day" name="price_per_day" value="{{ $product->price_per_day }}" required>
                 </div>
 
                 <!-- Status Selection -->
                 <div class="form-group mb-3">
-                    <label for="status">Status</label>
-                    <select class="form-control" id="status" name="status" required>
+                    <label for="status" class="form-label">Status</label>
+                    <select class="form-select" id="status" name="status" required>
                         <option value="Available" {{ $product->status == 'Available' ? 'selected' : '' }}>Available</option>
                         <option value="Rented" {{ $product->status == 'Rented' ? 'selected' : '' }}>Rented</option>
                         <option value="Unavailable" {{ $product->status == 'Unavailable' ? 'selected' : '' }}>Unavailable</option>
@@ -62,16 +62,22 @@
                 </div>
 
                 <!-- Product Image -->
-                <div class="form-group mb-3">
-                    <label for="image">Product Image</label>
+                <div class="form-group mb-4">
+                    <label for="image" class="form-label">Product Image</label>
                     <input type="file" class="form-control" id="image" name="image" accept="image/*">
-                    <small class="form-text text-muted">Current Image: {{ $product->image }}</small>
+                    @if($product->product_image)
+                        <div class="mt-3">
+                            <img src="{{ asset('storage/' . $product->product_image) }}" alt="Product Image" class="img-thumbnail" style="max-height: 200px;">
+                        </div>
+                    @endif
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" class="btn btn-primary btn-lg">
-                    <i class="bi bi-save"></i> Update Product
-                </button>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                        <i class="bi bi-save"></i> Update Product
+                    </button>
+                </div>
             </form>
             <!-- Form End -->
 
@@ -87,42 +93,30 @@
         border-radius: 10px;
     }
 
-    .card-body {
-        padding: 30px;
+    .form-label {
+        font-weight: bold;
     }
 
-    .form-group {
-        margin-bottom: 20px;
-    }
-
-    .form-control {
+    .form-control,
+    .form-select {
         border-radius: 8px;
-        padding: 12px;
+        padding: 10px;
         font-size: 16px;
-    }
-
-    .btn {
-        font-size: 16px;
-        padding: 10px 20px;
-    }
-
-    .btn-lg {
-        padding: 12px 20px;
     }
 
     .btn-primary {
         background-color: #007bff;
         border-color: #007bff;
+        transition: all 0.3s ease;
     }
 
     .btn-primary:hover {
         background-color: #0056b3;
-        border-color: #004085;
+        border-color: #0056b3;
     }
 
-    .form-text {
-        font-size: 12px;
-        color: #6c757d;
+    .img-thumbnail {
+        border-radius: 10px;
     }
 </style>
 @endsection

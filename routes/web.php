@@ -51,9 +51,10 @@ Route::get('show-products/{product}', [App\Http\Controllers\Admin\ProductControl
 
 Route::put('update-products/{products_id}', [App\Http\Controllers\Admin\ProductController::class, 'update'])->name('admin.product.update');
 
-Route::get('delete-products/{products_id}', [App\Http\Controllers\Admin\ProductController::class, 'destroy']);
+// Route::get('delete-products/{products_id}', [App\Http\Controllers\Admin\ProductController::class, 'destroy']);
 
 
+Route::delete('delete-products/{id}', [App\Http\Controllers\Admin\ProductController::class, 'destroy']);
 
 
 Route::resource('rentals', App\Http\Controllers\Admin\RentalController::class);

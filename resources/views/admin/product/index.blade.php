@@ -18,6 +18,8 @@
         <div class="card-body">
 
             <!-- Products Table -->
+            <table id="myTable" class="display">
+
             <table class="table table-striped table-bordered table-hover">
                 <thead class="thead-dark">
                     <tr>
@@ -46,13 +48,12 @@
                             </a>
 
                             <!-- Delete Button -->
-                            <form action="{{ url('admin/delete-products', $product->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm me-2">
-                                    <i class="bi bi-trash"></i> Delete
-                                </button>
+                            <form action="{{ url('admin/delete-products/' . $product->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
+
 
                             <!-- View Button -->
                             <a href="{{ url('admin/show-products', $product->id) }}" class="btn btn-info btn-sm">
@@ -63,6 +64,7 @@
                     @endforeach
                 </tbody>
             </table>
+
         </div>
     </div>
 

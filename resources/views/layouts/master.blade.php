@@ -16,6 +16,14 @@
     <!-- css -->
     <link href="{{asset('assets/css/styles.css')}}" rel="stylesheet">
 
+
+
+     <!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<!-- Optional Bootstrap 5 Styling for DataTables -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
@@ -45,5 +53,12 @@
 
 <script type="text/javascript" src="{{URL::asset('assets/js/bootstrap.bundle.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('assets/js/scripts.js')}}"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<!-- Optional Bootstrap 5 Integration -->
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
 </body>
 </html>
