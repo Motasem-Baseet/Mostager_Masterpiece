@@ -16,6 +16,8 @@
                 <th>Renter</th>
                 <th>Status</th>
                 <th>Price</th>
+                <th>Start date</th>
+                <th>End Date</th>
                 <th>Actions</th>
             </tr>
         </thead>

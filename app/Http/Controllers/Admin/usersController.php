@@ -24,8 +24,8 @@ class usersController extends Controller
         if($users){
             $users->name = $request->name;
             $users->email = $request->email;
-            // $users->phone = $request->phone;
-            // $users->address = $request->address;
+            $users->phone = $request->phone;
+            $users->address = $request->address;
             $users->role_as = $request->role_as;
 
             $users->update();

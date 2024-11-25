@@ -33,7 +33,7 @@
 
                             <div class="mb-3">
                                 <label for="">User Phone</label>
-                                <input type="text" name="phone" value="{{$users->Phone}}" class="form-control">
+                                <input type="text" name="phone" value="{{$users->phone}}" class="form-control">
                             </div>
 
                             <div class="mb-3">

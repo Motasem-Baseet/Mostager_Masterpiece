@@ -25,6 +25,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
+                        <th>Category</th>
                         <th>Price Per Day</th>
                         <th>Status</th>
                         <th>Actions</th>
@@ -35,6 +36,7 @@
                     <tr>
                         <td>{{ $product->name }}</td>
                         <td>{{ \Illuminate\Support\Str::limit($product->description, 50) }}</td>
+                        <td>{{($product->category->name) }}</td>
                         <td>${{ $product->price_per_day }}</td>
                         <td>
                             <span class="badge {{ $product->status == 'Available' ? 'bg-success' : 'bg-danger' }}">

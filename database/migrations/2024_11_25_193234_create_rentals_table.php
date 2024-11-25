@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('rental_start_date');
             $table->date('rental_end_date');
             $table->decimal('price', 10, 2);
-            $table->decimal('deposit', 10, 2)->nullable(); 
+            $table->decimal('deposit', 10, 2)->nullable();
             $table->timestamps();
         });
     }
