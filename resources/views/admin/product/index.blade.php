@@ -8,25 +8,25 @@
 <div class="container-fluid px-4">
 
     <!-- Header Section -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Products</h1>
-        <a href="{{ url('admin/add-products') }}" class="btn btn-primary btn-lg">Add New Product</a>
+    <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-light shadow-sm rounded">
+        <h1 class="mb-0 text-primary" style="font-size: 2rem; font-weight: bold;">Products</h1>
+        <a href="{{ url('admin/add-products') }}" class="btn btn-success btn-lg d-flex align-items-center">
+            <i class="bi bi-plus-circle me-2"></i> Add New Product
+        </a>
     </div>
 
     <!-- Products Table Section -->
     <div class="card shadow-sm rounded">
         <div class="card-body">
-
             <!-- Products Table -->
-            <table id="myTable" class="display">
-
-            <table class="table table-striped table-bordered table-hover">
+            <table id="myTable" class="table table-striped table-bordered table-hover">
                 <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Category</th>
                         <th>Price Per Day</th>
+                        <th>Picture</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
@@ -36,26 +36,30 @@
                     <tr>
                         <td>{{ $product->name }}</td>
                         <td>{{ \Illuminate\Support\Str::limit($product->description, 50) }}</td>
-                        <td>{{($product->category->name) }}</td>
+                        <td>{{ $product->category->name }}</td>
                         <td>${{ $product->price_per_day }}</td>
+                        <td>
+                            <img src="{{ asset($product->product_image) }}" alt="Product Image" style="max-height: 80px; max-width: 120px; object-fit: cover;">
+                        </td>
                         <td>
                             <span class="badge {{ $product->status == 'Available' ? 'bg-success' : 'bg-danger' }}">
                                 {{ $product->status }}
                             </span>
                         </td>
-                        <td class="d-flex">
+                        <td class="d-flex gap-2">
                             <!-- Edit Button -->
-                            <a href="{{ url('admin/edit-products', $product->id) }}" class="btn btn-warning btn-sm me-2">
+                            <a href="{{ url('admin/edit-products', $product->id) }}" class="btn btn-warning btn-sm">
                                 <i class="bi bi-pencil-square"></i> Edit
                             </a>
 
                             <!-- Delete Button -->
                             <form action="{{ url('admin/delete-products/' . $product->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Delete
+                                </button>
                             </form>
-
 
                             <!-- View Button -->
                             <a href="{{ url('admin/show-products', $product->id) }}" class="btn btn-info btn-sm">
@@ -67,74 +71,14 @@
                 </tbody>
             </table>
 
+            <!-- Pagination -->
+            <div class="mt-3 d-flex justify-content-center">
+                {{ $products->links('pagination::bootstrap-4') }}
+            </div>
         </div>
     </div>
 
 </div>
-@endsection
-
-@section('styles')
-<style>
-    .card {
-        border-radius: 8px;
-    }
-
-    .thead-dark {
-        background-color: #343a40;
-        color: white;
-    }
-
-    .table th, .table td {
-        vertical-align: middle;
-        text-align: center;
-    }
-
-    .btn {
-        padding: 8px 16px;
-        font-size: 14px;
-    }
-
-    .btn-sm {
-        padding: 6px 12px;
-        font-size: 13px;
-    }
-
-    .btn-warning {
-        background-color: #ffca28;
-        border-color: #ffca28;
-    }
-
-    .btn-warning:hover {
-        background-color: #ffb300;
-        border-color: #ffb300;
-    }
-
-    .btn-info {
-        background-color: #17a2b8;
-        border-color: #17a2b8;
-    }
-
-    .btn-info:hover {
-        background-color: #138496;
-        border-color: #138496;
-    }
-
-    .btn-danger {
-        background-color: #dc3545;
-        border-color: #dc3545;
-    }
-
-    .btn-danger:hover {
-        background-color: #c82333;
-        border-color: #c82333;
-    }
-
-    .badge {
-        font-size: 12px;
-        padding: 6px 12px;
-        border-radius: 12px;
-    }
-</style>
 @endsection
 
 @section('scripts')

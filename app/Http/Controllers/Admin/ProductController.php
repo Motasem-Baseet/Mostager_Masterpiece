@@ -13,6 +13,7 @@ class ProductController extends Controller
 
     public function index(){
         $products = Product::all();
+        $products = Product::with('category')->paginate(5);
         return view('admin.product.index', compact('products'));
     }
 
@@ -35,7 +36,7 @@ class ProductController extends Controller
     // dd($request);
 
     //handle file upload
-    $imagePath = $request->file('image')->store('public/products');
+    $imagePath = $request->file('image')->store('assets/products');
     // dd($request->user_id);
     Product::create([
         'user_id' => auth()->id(),
@@ -83,9 +84,16 @@ class ProductController extends Controller
 
     // Handle file upload if a new image is provided
     if ($request->hasFile('image')) {
-        $imagePath = $request->file('image')->store('public/products');
-        $product->product_image = $imagePath; // Update product_image column
+        $image = $request->file('image');
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+        $destinationPath = public_path('assets/products');
+        $image->move($destinationPath, $filename);
+
+        // Save the filename to the database
+        $product->product_image = 'assets/products/' . $filename;
+        $product->save();
     }
+
 
     // Update product attributes
     $product->update([

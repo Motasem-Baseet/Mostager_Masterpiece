@@ -8,11 +8,16 @@
 <div class="container-fluid px-4">
 
     <!-- Card Header with Add Category Button -->
-    <div class="card mt-4 shadow-sm">
-        <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">View Categories</h4>
-            <a href="{{ 'add-category' }}" class="btn btn-light btn-sm float-end">Add Category</a>
-        </div>
+    <div class="card mt-4 shadow-sm rounded">
+    <div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-light shadow-sm rounded">
+    <h1 class="mb-0 text-primary" style="font-size: 2rem; font-weight: bold;">Categories</h1>
+    <a href="{{ url('/admin/add-category') }}" class="btn btn-success btn-lg d-flex align-items-center">
+        <i class="bi bi-plus-circle me-2"></i> Add Category
+    </a>
+</div>
+    
+
+
 
         <!-- Success Message Alert -->
         @if(session('message'))
@@ -51,6 +56,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="mt-3">
+        {{ $category->links('pagination::bootstrap-4') }}
+    </div>
         </div>
     </div>
 

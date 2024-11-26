@@ -12,10 +12,9 @@
         <!-- Product Card -->
         <div class="card shadow-lg rounded mx-auto" style="max-width: 600px;">
             <!-- Product Image -->
-            <img src="{{ asset('storage/' . $product->product_image) }}"
-                 class="card-img-top"
-                 alt="Product Image"
-                 style="max-height: 400px; object-fit: cover;">
+            <img src="{{ asset($product->product_image) }}" alt="Product Image" style="max-height: 400px; object-fit: cover;">
+
+
 
             <!-- Card Body -->
             <div class="card-body">

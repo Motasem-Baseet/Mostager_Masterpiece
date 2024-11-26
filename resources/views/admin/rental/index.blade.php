@@ -6,8 +6,14 @@
 
 @section('content')
 <div class="container">
-    <h1>Rentals</h1>
-    <a href="{{ route('rentals.create') }}" class="btn btn-primary">Create New Rental</a>
+
+
+<div class="d-flex justify-content-between align-items-center mb-4 p-3 bg-light shadow-sm rounded">
+        <h1 class="mb-0 text-primary" style="font-size: 2rem; font-weight: bold;">Rentals</h1>
+
+    </div>
+
+
     <table class="table mt-4">
         <thead>
             <tr>
@@ -28,9 +34,9 @@
                     <td>{{ $rental->owner->name }}</td>
                     <td>{{ $rental->renter->name }}</td>
                     <td>{{ $rental->status }}</td>
+                    <td>{{ $rental->price }}</td>
                     <td>{{ $rental->rental_start_date }}</td>
                     <td>{{ $rental->rental_end_date }}</td>
-                    <td>{{ $rental->price }}</td>
                     <td>
                         <a href="{{ route('rentals.edit', $rental->id) }}" class="btn btn-warning">Edit</a>
                         <form action="{{ route('rentals.destroy', $rental->id) }}" method="POST" style="display:inline;">
