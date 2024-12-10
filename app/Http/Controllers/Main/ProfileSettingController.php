@@ -10,4 +10,6 @@ class ProfileSettingController extends Controller
     public function index(){
         return view('main.dashsettingPage');
     }
+
+    
 }

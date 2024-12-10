@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->decimal('price_per_day', 10, 2);
+            $table->decimal('quantity');
             $table->enum('status', ['available', 'rented', 'unavailable'])->default('available');
             $table->string('product_image')->nullable();
             $table->timestamps();

@@ -1,5 +1,11 @@
 @extends('mainlayouts.mainMaster')
 
+    
+{{-- @if(Auth::check())
+    <p>Logged-in User ID: {{ Auth::id() }}</p>
+@else
+    <p>No user is currently logged in.</p>
+@endif --}}
 <div id="main-slide" class="carousel slide" data-ride="carousel">
 <div class="carousel-inner">
 <div class="carousel-item active">
@@ -143,21 +149,24 @@
 <div class="container">
 <h1 class="section-title">What people search</h1>
 <div class="row">
-<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+    @foreach ($products as $product)
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+
 <div class="featured-box">
 <figure>
 <div class="icon">
 <span class="bg-green"><i class="lni-heart"></i></span>
 <span><i class="lni-bookmark"></i></span>
 </div>
-<a href="#"><img class="img-fluid" src="{{asset('assets/img/featured/drill1.webp')}}" alt=""></a>
+<a href="#"><img class="img-fluid" src="{{ asset($product->product_image) }}" alt=""></a>
 </figure>
 <div class="feature-content">
 <div class="product">
-<a href="#">Electronic > </a>
-<a href="#">Cameras</a>
+<a href="#">{{ $product->category->name }} </a>
+<a href="#">> Cameras</a>
 </div>
-<h4><a href="ads-details.html">Canon SX Powershot ...</a></h4>
+<h4><a href="ads-details.html">{{$product->name}}</a></h4>
 <div class="meta-tag">
 <span>
 <a href="#"><i class="lni-user"></i> John Smith</a>
@@ -169,15 +178,17 @@
 <a href="#"><i class="lni-tag"></i> Canon</a>
 </span>
 </div>
-<p class="dsc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry.</p>
+<p class="dsc">{{$product->description}}</p>
 <div class="listing-bottom">
-<h3 class="price float-left">$249.00</h3>
+<h3 class="price float-left">{{$product->price_per_day}} </h3>
 <a href="ads-details.html" class="btn btn-common float-right">View Details</a>
 </div>
 </div>
 </div>
+
 </div>
-<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+@endforeach
+{{-- <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
 <div class="featured-box">
 <figure>
 <span class="price-save">
@@ -357,7 +368,7 @@
 </div>
 </div>
 </div>
-</div>
+</div> --}}
 </section>
 
 
@@ -479,6 +490,9 @@
 <div class="call-back section-padding bg-light">
 <div class="container">
 <h4>Contact Us</h4>
+<form action="POST" action="{{route('contact.submit')}}'">
+    @csrf
+
 <div class="row">
 <div class="col-lg-8 col-md-6 col-xs-12">
 <div class="row">
@@ -489,7 +503,7 @@
 </div>
 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 <div class="form-group has-error">
-<input type="email" class="form-control" placeholder="catagory">
+<input type="text" class="form-control" placeholder="catagory">
 </div>
 </div>
 </div>
@@ -505,7 +519,7 @@
 </div>
 </div>
 </div>
-<a href="#" class="btn btn-common">Send</a>
+<button type="submit" class="btn btn-common">Send</button>
 </div>
 <div class="col-lg-4 col-md-6 col-xs-12">
 <div class="call-us">
@@ -519,6 +533,7 @@
 </div>
 </div>
 </div>
+</form>
 </div>
 </div>
 

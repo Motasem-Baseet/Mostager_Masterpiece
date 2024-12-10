@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 
 
@@ -62,7 +64,7 @@ Route::resource('rentals', App\Http\Controllers\Admin\RentalController::class);
 
 });
 
-Route::prefix('main')->group(function (){
+Route::prefix('main')->middleware(['auth'])->group(function (){
 
     Route::get('/index', [App\Http\Controllers\Main\MainController::class, 'index']);
 
@@ -75,7 +77,6 @@ Route::prefix('main')->group(function (){
 
     Route::get('/dashboard', [App\Http\Controllers\Main\dashboardController::class, 'index']);
 
-    Route::get('/profile-setting', [App\Http\Controllers\Main\DashSettingController::class, 'index']);
     Route::get('/profile-post', [App\Http\Controllers\Main\ProfilepostController::class, 'index']);
     Route::get('/profile-payment', [App\Http\Controllers\Main\ProfilePaymentController::class, 'index']);
     Route::get('/profile-favorite', [App\Http\Controllers\Main\ProfileFavoriteController::class, 'index']);
@@ -88,4 +89,14 @@ Route::prefix('main')->group(function (){
     Route::get('register', [App\Http\Controllers\Main\RegisterController::class, 'index']);
 
     Route::get('contactUs', [App\Http\Controllers\Main\ContactUsController::class, 'index']);
+
+
+Route::match(['get', 'post'], '/profile-setting', [App\Http\Controllers\Main\DashSettingController::class, 'handleRequest'])->name('main.dashsettingPage');
+
+
+
+    Route::get('/contact', function(){
+        return view('main.indexPage');
+    })->name('contact');
+    Route::post('/contact', [App\Http\Controllers\Main\ContactController::class, 'submit'])->name('contact.submit');
 });
