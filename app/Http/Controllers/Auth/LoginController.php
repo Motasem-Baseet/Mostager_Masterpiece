@@ -31,7 +31,7 @@ class LoginController extends Controller
         if(Auth::user()->role_as == '1'){
             return redirect('admin/dashboard')->with('status', ' Welcome to admin dashboard');
         }else{
-            return redirect('/home')->with('status', 'Logged in Seccessful');
+            return redirect('/main/index')->with('status', 'Logged in Seccessful');
         }
     }
 
