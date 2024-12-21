@@ -32,6 +32,7 @@ class ProductController extends Controller
         'price_per_day' => 'required|numeric|min:1',
         'status' => 'required|in:Available,Rented,Unavailable',
         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'quantity' => 'required|min:1|max:100'
     ]);
 
     // Handle file upload
@@ -51,7 +52,9 @@ class ProductController extends Controller
         'description' => $request->description,
         'price_per_day' => $request->price_per_day,
         'status' => $request->status,
+        'quantity' => $request->quantity,
         'product_image' => $filename ? 'assets/products/' . $filename : null,
+
     ]);
 
     // Redirect with success message
@@ -82,6 +85,8 @@ class ProductController extends Controller
         'price_per_day' => 'required|numeric',
         'status' => 'required|in:Available,Rented,Unavailable',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'quantity' => 'required|min:1|max:100'
+
     ]);
 
     $product = Product::findOrFail($products_id);
@@ -105,6 +110,8 @@ class ProductController extends Controller
         'price_per_day' => $request->price_per_day,
         'status' => $request->status,
         'product_image' => $product->product_image,
+        'quantity' => 'required|min:1|max:100'
+
     ]);
 
     return redirect()->route('admin.product.index')->with('success', 'Product updated successfully.');

@@ -25,10 +25,17 @@ class DashSettingController extends Controller
                 'description' => 'required|string',
                 'price_per_day' => 'required|numeric',
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'quantity' => 'required|min:1|max:100'
+
             ]);
 
-            // Handle file upload
-            $imagePath = $request->file('image')->store('assets/products');
+            $filename = null;
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $filename = time() . '.' . $image->getClientOriginalExtension();
+        $destinationPath = public_path('assets/products');
+        $image->move($destinationPath, $filename);
+    }
 
             // Save the product
             Product::create([
@@ -37,7 +44,8 @@ class DashSettingController extends Controller
                 'name' => $request->name,
                 'description' => $request->description,
                 'price_per_day' => $request->price_per_day,
-                'product_image' => $imagePath,
+                'product_image' => $filename ? 'assets/products/' . $filename : null,
+                'quantity' => $request->quantity,
             ]);
 
             return redirect()->route('main.dashsettingPage')->with('success', 'Product created successfully.');

@@ -12,7 +12,7 @@ class Product extends Model
     protected $table = 'products';
 
     protected $fillable = [
-        'user_id', 'name', 'description', 'category_id' , 'price_per_day', 'status', 'product_image'
+        'user_id', 'name', 'description', 'category_id' , 'price_per_day', 'status', 'product_image' ,'quantity',
     ];
 
     public function user(){
@@ -22,4 +22,10 @@ class Product extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+
+
+    public function cart(){
+        return $this->hasMany(Cart::class);
+    }
+
 }

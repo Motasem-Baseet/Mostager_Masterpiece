@@ -11,18 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rentals', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->foreignId('owner_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('renter_id')->nullable()->constrained('users')->onDelete('cascade');
-            $table->enum('status', ['available', 'rented', 'completed', 'cancelled']);
-            $table->date('rental_start_date');
-            $table->date('rental_end_date');
-            $table->decimal('price', 10, 2);
-            $table->decimal('deposit', 10, 2)->nullable();
-            $table->timestamps();
-        });
+        {
+            if (!Schema::hasTable('rentals')) {
+                Schema::create('rentals', function (Blueprint $table) {
+                    $table->id();
+                    $table->unsignedBigInteger('product_id');
+                    $table->unsignedBigInteger('owner_id');
+                    $table->unsignedBigInteger('renter_id')->nullable();
+                    $table->enum('status', ['available', 'rented', 'completed', 'cancelled']);
+                    $table->date('rental_start_date');
+                    $table->date('rental_end_date');
+                    $table->decimal('price', 10, 2);
+                    $table->decimal('deposit', 10, 2)->nullable();
+                    $table->timestamps();
+                });
+            }
+        }
+
     }
 
     /**

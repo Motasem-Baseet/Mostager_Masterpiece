@@ -93,6 +93,21 @@ Route::prefix('main')->middleware(['auth'])->group(function (){
 
 Route::match(['get', 'post'], '/profile-setting', [App\Http\Controllers\Main\DashSettingController::class, 'handleRequest'])->name('main.dashsettingPage');
 
+Route::get('/single-product/{id}',[App\Http\Controllers\singleProductcontoller::class, 'index'] )->name('singleProduct.index');
+Route::post('/single-product/{id}',[App\Http\Controllers\singleProductcontoller::class, 'index'] );
+
+Route::get('/cart',[App\Http\Controllers\Main\CartController::class, 'index'] )->name('cart.index');
+Route::post('/cart/add', [App\Http\Controllers\Main\CartController::class, 'addToCart'])->name('cart.add');
+Route::put('/cart/update/{id}', [App\Http\Controllers\Main\CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/{id}', [App\Http\Controllers\Main\CartController::class, 'removeFromCart'])->name('cart.remove');
+
+
+Route::get('/checkout',[App\Http\Controllers\Main\CheckoutController::class, 'index'] )->name('checkout');
+
+Route::post('/messages', [App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
+Route::get('/messages/{receiverId}', [App\Http\Controllers\MessageController::class, 'fetchMessages'])->name('messages.fetch');
+
+
 
 
     Route::get('/contact', function(){

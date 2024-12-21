@@ -35,8 +35,8 @@
                                 @csrf <!-- Laravel CSRF token -->
                                 <div class="dashboard-wrapper">
                                     <div class="form-group mb-3">
-                                        <label class="control-label">Project Title</label>
-                                        <input class="form-control input-md" name="name" placeholder="Product Name" type="text">
+                                        <label class="control-label">Product Title</label>
+                                        <input class="form-control input-md" name="name" placeholder="Product Name" type="text" required>
                                     </div>
 
                                     <div class="form-group mb-3 tg-inputwithicon">
@@ -53,14 +53,18 @@
 
                                     <div class="form-group mb-3">
                                         <label class="control-label">Price per Day</label>
-                                        <input class="form-control input-md" name="price_per_day" placeholder="Enter Price" type="text">
+                                        <input class="form-control input-md" name="price_per_day" placeholder="Enter Price" type="text"required>
                                     </div>
 
                                     <div class="form-group mb-3">
                                         <label class="control-label">Description</label>
-                                        <textarea class="form-control" name="description" rows="4" placeholder="Enter a description"></textarea>
+                                        <textarea class="form-control" name="description" rows="4" placeholder="Enter a description"required></textarea>
                                     </div>
 
+                                    <div class="form-group mb-3">
+                                        <label class="control-label">Quantity</label>
+                                        <input type="number" class="form-control" name="quantity" min="1" required></input>
+                                    </div>
 
 
                                     <div class="form-group mb-3">

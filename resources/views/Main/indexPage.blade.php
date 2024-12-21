@@ -1,6 +1,6 @@
 @extends('mainlayouts.mainMaster')
 
-    
+
 {{-- @if(Auth::check())
     <p>Logged-in User ID: {{ Auth::id() }}</p>
 @else
@@ -181,7 +181,7 @@
 <p class="dsc">{{$product->description}}</p>
 <div class="listing-bottom">
 <h3 class="price float-left">{{$product->price_per_day}} </h3>
-<a href="ads-details.html" class="btn btn-common float-right">View Details</a>
+<a href="{{route('singleProduct.index', ['id'=>$product->id])}}" class="btn btn-common float-right">View Details</a>
 </div>
 </div>
 </div>

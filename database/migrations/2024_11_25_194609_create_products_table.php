@@ -11,23 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
-            $table->string('name');
-            $table->text('description');
-            $table->decimal('price_per_day', 10, 2);
-            $table->decimal('quantity');
-            $table->enum('status', ['available', 'rented', 'unavailable'])->default('available');
-            $table->string('product_image')->nullable();
-            $table->timestamps();
-            $table->softDeletes();
+        if (!Schema::hasTable('products')) {
+            Schema::create('products', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('user_id')->constrained()->onDelete('cascade');
+                $table->foreignId('category_id')->constrained()->onDelete('cascade');
+                $table->string('name');
+                $table->text('description');
+                $table->decimal('price_per_day', 10, 2);
+                $table->integer('quantity');
+                $table->enum('status', ['available', 'rented', 'unavailable'])->default('available');
+                $table->string('product_image')->nullable();
+                $table->timestamps();
+                $table->softDeletes();
 
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-        });
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            });
     }
+}
 
     /**
      * Reverse the migrations.
