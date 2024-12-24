@@ -13,9 +13,13 @@ class CheckoutController extends Controller
 {
     public function index()
     {
-        $cartItem = Cart::where('user_id', auth()->id())->get();
+        $cartItems = Cart::where('user_id', auth()->id())->get();
+            $cartItem = $cartItems[0];
+            return view('main.checkoutPage', compact('cartItem'));
 
-        return view('main.checkoutPage', compact('cartItem'));
+
+
+
     }
 
 
