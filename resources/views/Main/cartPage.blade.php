@@ -10,7 +10,7 @@
                         <h5 class="mb-0 text-center text-uppercase">Cart Items</h5>
                     </div>
                     <div class="card-body">
-                        @if ($cartItems):
+                        @if (isset($cartItem))
                         <table class="table table-hover align-middle">
                             <thead class="table-light">
                                 <tr>
@@ -23,12 +23,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($cartItems as $cartItem)
-                                {{-- @dd($cartItems); --}}
+                                {{-- @dd($cartItem); --}}
                                 <tr>
                                     <!-- Image -->
                                     <td style="width: 100px;">
                                         <div class="bg-image hover-overlay hover-zoom ripple rounded">
+                                            {{-- @dd($item) --}}
                                             <img style="height: 80px;" src="{{ asset($cartItem->product_image) }}" class="img-fluid rounded" alt="{{ $cartItem->product_name }} ">
                                         </div>
                                     </td>
@@ -60,7 +60,6 @@
                                             </form>
                                         </td>
                                     </tr>
-                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -77,7 +76,7 @@
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <span>Products</span>
-                                    <span>{{ $cartItems->sum('total_price')??null }} JOD</span>
+                                    <span>{{ $cartItem->sum('total_price')??null }} JOD</span>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <span>Shipping</span>
@@ -85,7 +84,7 @@
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <strong>Total (including VAT)</strong>
-                                    <strong>{{ $cartItems->sum('total_price')??null }} JOD</strong>
+                                    <strong>{{ $cartItem->sum('total_price')??null }} JOD</strong>
                                 </li>
                             </ul>
 
@@ -95,12 +94,15 @@
                                 Go to Checkout
                             </a>
                             @else
+
                             <p class="text-center">There are no items in your cart.</p>
+
                             @endif
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 

@@ -11,16 +11,20 @@ class CartController extends Controller
 
     public function index()
     {
+        // Retrieve only the cart items for the authenticated user
+        $cartItems = Cart::where('user_id', auth()->id())->get();
+        if($cartItems->isNotEmpty()){
+            $cartItem = $cartItems[0];
+            return view('main.cartPage', compact('cartItem'));
+        } else
+        return view('main.cartPage');
 
 
-        $cartItems = Cart::all();
+        // dd($cartItem);
 
-        if ($cartItems->isEmpty()) {
-            return view('main.cartPage', ['cartItems' => null]);
-        }
 
-        return view('main.cartPage', compact('cartItems'));
     }
+
 
     public function addToCart(Request $request){
 
@@ -45,7 +49,7 @@ class CartController extends Controller
                 ], 400);
             }
 
-            $cartItems = Cart::create([
+            $cartItem = Cart::create([
                 'user_id'=>auth()->id(),
                 'product_id'=>$request->product_id,
                 'rental_start_date'=>$request->rental_start_date,
@@ -56,9 +60,10 @@ class CartController extends Controller
                 'total_price'=>$this->calculatePrice($request->product_id, $request->quantity, $request->rental_start_date, $request->rental_end_date),
                 'status'=>'pending',
             ]);
-            // dd($request->quantity);
 
-            return view('main.cartPage', compact('cartItems'));
+            // dd($request->quantity);
+            // dd($cartItem);
+            return view('main.cartPage', compact('cartItem'));
 
 
         }
@@ -71,18 +76,14 @@ class CartController extends Controller
 
     public function removeFromCart($cartItemId)
     {
-        // Find the cart item by its ID and ensure it belongs to the authenticated user
         $cartItem = Cart::where('user_id', auth()->id())->find($cartItemId);
 
-        // If the cart item doesn't exist or the user is not the owner, return an error
         if (!$cartItem) {
             return redirect()->route('cart.index')->with('error', 'Item not found in your cart.');
         }
 
-        // Delete the cart item
         $cartItem->delete();
 
-        // Redirect back to the cart page with a success message
         return redirect()->route('cart.index')->with('success', 'Item removed from the cart.');
     }
 

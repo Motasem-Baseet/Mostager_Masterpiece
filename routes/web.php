@@ -70,6 +70,7 @@ Route::prefix('main')->middleware(['auth'])->group(function (){
 
     Route::get('/products', [App\Http\Controllers\Main\ProductsController::class, 'index']);
 
+
     Route::get('/about-us', [App\Http\Controllers\Main\AboutUsController::class, 'index']);
 
     Route::get('/services', [App\Http\Controllers\Main\servicesController::class, 'index']);
@@ -103,6 +104,8 @@ Route::delete('/cart/{id}', [App\Http\Controllers\Main\CartController::class, 'r
 
 
 Route::get('/checkout',[App\Http\Controllers\Main\CheckoutController::class, 'index'] )->name('checkout');
+Route::post('/checkout', [App\Http\Controllers\Main\CheckoutController::class, 'process'])->name('checkout.process');
+
 
 Route::post('/messages', [App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
 Route::get('/messages/{receiverId}', [App\Http\Controllers\MessageController::class, 'fetchMessages'])->name('messages.fetch');

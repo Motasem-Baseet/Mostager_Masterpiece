@@ -87,63 +87,62 @@
 
 
 <section class="categories-icon bg-light section-padding">
-<div class="container">
-<h1 class="section-title">Searsh By Category</h1>
-<div class="row">
-<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-<a href="category.html">
-<div class="icon-box">
-<div class="icon">
-    <i class="fa-solid fa-hammer"></i>
-</div>
-<h4>equipment</h4>
-</div>
-</a>
-</div>
-<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-<a href="category.html">
-<div class="icon-box">
-<div class="icon">
-    <i class="fa-solid fa-plug"></i>
-</div>
-<h4>Electronics</h4>
-</div>
-</a>
-</div>
-<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-<a href="category.html">
-<div class="icon-box">
-<div class="icon">
-<i class="lni-mobile"></i>
-</div>
-<h4>Mobiles</h4>
-</div>
-</a>
-</div>
-<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-<a href="category.html">
-<div class="icon-box">
-<div class="icon">
-<i class="lni-leaf"></i>
-</div>
-<h4>Furnitures</h4>
-</div>
-</a>
-</div>
-<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-<a href="category.html">
-<div class="icon-box">
-<div class="icon">
-<i class="lni-paint-roller"></i>
-</div>
-<h4>Services</h4>
-</div>
-</a>
-</div>
-</div>
-</div>
+    <div class="container">
+        <h1 class="section-title">Search By Category</h1>
+        <div class="row">
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                <a href="{{ url('products?category=equipment') }}">
+                    <div class="icon-box">
+                        <div class="icon">
+                            <i class="fa-solid fa-hammer"></i>
+                        </div>
+                        <h4>Equipment</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                <a href="{{ url('products?category=electronics') }}">
+                    <div class="icon-box">
+                        <div class="icon">
+                            <i class="fa-solid fa-plug"></i>
+                        </div>
+                        <h4>Electronics</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                <a href="{{ url('products?category=mobiles') }}">
+                    <div class="icon-box">
+                        <div class="icon">
+                            <i class="lni-mobile"></i>
+                        </div>
+                        <h4>Mobiles</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                <a href="{{ url('products?category=furnitures') }}">
+                    <div class="icon-box">
+                        <div class="icon">
+                            <i class="lni-leaf"></i>
+                        </div>
+                        <h4>Furnitures</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                <a href="{{ url('products?category=services') }}">
+                    <div class="icon-box">
+                        <div class="icon">
+                            <i class="lni-paint-roller"></i>
+                        </div>
+                        <h4>Services</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 </section>
-
 
 <section class="featured section-padding">
 <div class="container">

@@ -8,23 +8,21 @@
                   <div class='line'></div>
           <table class='order-table'>
             <tbody>
-                @foreach ($cartItems as $item)
 
               <tr>
-                <td><img src='{{asset($item->product_image)}}' class='full-width'></img>
+                <td><img src='{{asset($cartItem->product_image)}}' class='full-width'></img>
                 </td>
                 <td>
-                  <br> <span class='thin'>{{$item->product_name}}</span>
-                   <span class='thin small'><br>Quantity: {{$item->quantity}}<br> <br> {{ $item->rental_start_date }} | {{ $item->rental_end_date }}<br></span>
+                  <br> <span class='thin'>{{$cartItem->product_name}}</span>
+                   <span class='thin small'><br>Quantity: {{$cartItem->quantity}}<br> <br> {{ $cartItem->rental_start_date }} | {{ $cartItem->rental_end_date }}<br></span>
                 </td>
 
               </tr>
               <tr>
                 <td>
-                  <div class='price1'>{{ $cartItems->sum('total_price')??null }} JOD</div>
+                  <div class='price1'>{{ $cartItem->sum('total_price')??null }} JOD</div>
                 </td>
               </tr>
-              @endforeach
 
             </tbody>
 
@@ -40,7 +38,7 @@
             <span style='float:right; text-align:right;'>
               <div class='thin dense'>$68.75</div>
               <div class='thin dense'>$4.95</div>
-              {{ $cartItems->sum('total_price')??null }} JOD
+              {{ $cartItem->sum('total_price')??null }} JOD
             </span>
           </div>
   </div>
@@ -72,7 +70,10 @@
                   </td>
                 </tr>
               </table>
-              <button class='pay-btn'>Checkout</button>
+              <form action="{{ route('checkout.process') }}" method="POST">
+                @csrf
+                <button type="submit" class="pay-btn">Checkout</button>
+            </form>
 
             </div>
 

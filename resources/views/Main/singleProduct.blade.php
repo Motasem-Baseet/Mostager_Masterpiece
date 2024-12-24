@@ -101,7 +101,7 @@
     <div class="widget">
     <h4 class="widget-title">Get your needs</h4>
     <div class="form-basin">
-        <form action="{{ route('cart.add') }}" method="POST">
+        <form action="{{ route('cart.add')}}" method="POST">
             @csrf
 
             <input type="hidden" id="product_id" name="product_id" value="{{ $product->id }}">
