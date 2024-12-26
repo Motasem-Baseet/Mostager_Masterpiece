@@ -14,6 +14,7 @@ class Rental extends Model
         'rental_start_date', 'rental_end_date', 'price', 'deposit'
     ];
 
+
     public function product()
     {
         return $this->belongsTo(Product::class);

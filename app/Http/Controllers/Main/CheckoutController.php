@@ -1,47 +1,57 @@
 <?php
 
-namespace App\Http\Controllers\main;
+namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cart;
-use Illuminate\Support\Facades\DB;
-
-
+use App\Models\Product;
+use App\Models\Rental;
 
 class CheckoutController extends Controller
 {
     public function index()
     {
         $cartItems = Cart::where('user_id', auth()->id())->get();
+
+        if ($cartItems->isNotEmpty()) {
             $cartItem = $cartItems[0];
             return view('main.checkoutPage', compact('cartItem'));
-
-
-
-
-    }
-
-
-
-    public function process(Request $request)
-    {
-        // Assuming $cartItem is available through the authenticated user
-        $cartItem = auth()->user()->cartItem;
-
-        if ($cartItem) {
-            DB::transaction(function () use ($cartItem) {
-                // Update the product status to 'rented'
-                $cartItem->product->update(['status' => 'rented']);
-
-                // Optionally delete the cart item after checkout
-                $cartItem->delete();
-            });
-
-            return redirect()->route('products.index')->with('success', 'Checkout successful! Product has been rented.');
-        } else {
-            return redirect()->route('cart.index')->with('error', 'No items in the cart.');
         }
+
+        return redirect()->route('cart.index')->with('error', 'Your cart is empty.');
     }
 
+    public function processCheckout(Request $request)
+    {
+        // Get the cart item
+        $cartItem = Cart::where('user_id', auth()->id())->first();
+
+        if (!$cartItem) {
+            return redirect()->route('cart.index')->with('error', 'Your cart is empty.');
+        }
+
+        // Update product status to 'rented'
+        $product = Product::find($cartItem->product_id);
+        if ($product) {
+            $product->update(['status' => 'rented']);
+        }
+// dd($product);
+        // Insert data into rentals table
+        Rental::create([
+            'product_id' => $cartItem->product_id,
+            'owner_id' => $product->user_id,
+            'renter_id' => auth()->id(),
+            'status' => 'rented',
+            'rental_start_date' => $cartItem->rental_start_date,
+            'rental_end_date' => $cartItem->rental_end_date,
+            'price' => $cartItem->total_price,
+            'deposit' => null,
+        ]);
+
+        // Remove the item from the cart
+        $cartItem->delete();
+
+        return redirect()->route('cart.index')->with('success', 'Checkout completed successfully!');
+    }
 }

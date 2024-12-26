@@ -46,7 +46,7 @@
                                     <td>
                                             <div class="qty-input">
                                                 <button style="background-color: #e91e63; border-radius: 5px;" class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
-                                                <input style="background-color: rgba(0, 0, 0, 0.1)" class="product-qty" type="number" name="product-qty" min="0" max="10" value="1">
+                                                <input style="background-color: rgba(0, 0, 0, 0.1)" class="product-qty" type="number" name="product-qty" min="0" max="10" value="{{$cartItem->quantity}}">
                                                 <button style="background-color: #e91e63; border-radius: 5px;" class="qty-count qty-count--add" data-action="add" type="button" style="background-color:#fff;">+</button>
                                             </div>
                                         </td>
@@ -90,7 +90,7 @@
 
 
                                 <input type="hidden" name="checkout" value="{{$cartItem->product_id}}">
-                            <a href="{{route('checkout')}}"  class="btn btn-lg btn-block mt-3" style="background-color: #e91e63; color: white;">
+                            <a href="{{route('checkout.index')}}"  class="btn btn-lg btn-block mt-3" style="background-color: #e91e63; color: white;">
                                 Go to Checkout
                             </a>
                             @else

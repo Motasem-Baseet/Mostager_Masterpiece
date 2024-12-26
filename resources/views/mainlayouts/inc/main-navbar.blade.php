@@ -76,7 +76,7 @@ Contact
 </li>
 </ul>
 <div class="post-btn">
-<a class="btn btn-common" href="{{url('main/dashboard')}}"><i class="lni-pencil-alt"></i> </a>
+<a class="btn btn-common" href="{{url('main/dashboard')}}"><i class="lni-pencil-alt"></i> Post Ad </a>
 </div>
 </div>
 </div>

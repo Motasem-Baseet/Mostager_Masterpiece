@@ -87,5 +87,6 @@ class CartController extends Controller
         return redirect()->route('cart.index')->with('success', 'Item removed from the cart.');
     }
 
+    
 
 }

@@ -24,11 +24,13 @@ class CategoryController extends Controller
 
     public function store(CategoryFormRequest $request)
     {
+        // dd($request);
         $data = $request->validated();
-
         $category = new Category;
         $category->name = $data['name'];
         $category->description = $data['description'];
+        $category->slug= $data['slug'];
+
 
         $category->save();
 
@@ -47,6 +49,7 @@ class CategoryController extends Controller
         $category = Category::find($category_id);
         $category->name = $data['name'];
         $category->description = $data['description'];
+        $category->slug = $data['slug'];
 
         $category->update();
 

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 
+
 Route::get('/', function () {
     return view('home');
 });
@@ -68,7 +69,7 @@ Route::prefix('main')->middleware(['auth'])->group(function (){
 
     Route::get('/index', [App\Http\Controllers\Main\MainController::class, 'index']);
 
-    Route::get('/products', [App\Http\Controllers\Main\ProductsController::class, 'index']);
+    Route::get('/products', [App\Http\Controllers\Main\ProductsController::class, 'index'])->name('products.index');
 
 
     Route::get('/about-us', [App\Http\Controllers\Main\AboutUsController::class, 'index']);
@@ -102,10 +103,12 @@ Route::post('/cart/add', [App\Http\Controllers\Main\CartController::class, 'addT
 Route::put('/cart/update/{id}', [App\Http\Controllers\Main\CartController::class, 'update'])->name('cart.update');
 Route::delete('/cart/{id}', [App\Http\Controllers\Main\CartController::class, 'removeFromCart'])->name('cart.remove');
 
+// Route::get('profile', [App\Http\Controllers\Main\UsersController::class, 'editProfile'])->name('user.editProfile');
+// Route::post('profile/update', [App\Http\Controllers\Main\UsersController::class, 'updateProfile'])->name('user.updateProfile');
 
-Route::get('/checkout',[App\Http\Controllers\Main\CheckoutController::class, 'index'] )->name('checkout');
-Route::post('/checkout', [App\Http\Controllers\Main\CheckoutController::class, 'process'])->name('checkout.process');
 
+Route::get('/checkout', [App\Http\Controllers\Main\CheckoutController::class, 'index'])->name('checkout.index');
+Route::post('/checkout/process', [App\Http\Controllers\Main\CheckoutController::class, 'processCheckout'])->name('checkout.process');
 
 Route::post('/messages', [App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
 Route::get('/messages/{receiverId}', [App\Http\Controllers\MessageController::class, 'fetchMessages'])->name('messages.fetch');

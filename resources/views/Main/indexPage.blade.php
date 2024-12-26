@@ -91,17 +91,17 @@
         <h1 class="section-title">Search By Category</h1>
         <div class="row">
             <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                <a href="{{ url('products?category=equipment') }}">
+                <a href="{{ route('products.index', ['category' => 'Hand-Tools']) }}">
                     <div class="icon-box">
                         <div class="icon">
-                            <i class="fa-solid fa-hammer"></i>
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
                         </div>
                         <h4>Equipment</h4>
                     </div>
                 </a>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                <a href="{{ url('products?category=electronics') }}">
+                <a href="{{ route('products.index', ['category' => 'Electrical']) }}">
                     <div class="icon-box">
                         <div class="icon">
                             <i class="fa-solid fa-plug"></i>
@@ -111,38 +111,39 @@
                 </a>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                <a href="{{ url('products?category=mobiles') }}">
+                <a href="{{route('products.index', ['category' =>'General Safety'])}}">
                     <div class="icon-box">
                         <div class="icon">
-                            <i class="lni-mobile"></i>
+                            <i class="fa-solid fa-fire-extinguisher"></i>
                         </div>
-                        <h4>Mobiles</h4>
+                        <h4>General Safety</h4>
                     </div>
                 </a>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                <a href="{{ url('products?category=furnitures') }}">
+                <a href="{{route('products.index', ['category' =>'Gardening'])}}">
                     <div class="icon-box">
                         <div class="icon">
-                            <i class="lni-leaf"></i>
-                        </div>
-                        <h4>Furnitures</h4>
+                            <i class="fa-solid fa-tree-city"></i>
+                            </div>
+                        <h4>Garedning</h4>
                     </div>
                 </a>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                <a href="{{ url('products?category=services') }}">
+                <a href="{{route('products.index', ['category' =>'Ladders'])}}">
                     <div class="icon-box">
                         <div class="icon">
-                            <i class="lni-paint-roller"></i>
+                            <i class="fa-solid fa-water-ladder"></i>
                         </div>
-                        <h4>Services</h4>
+                        <h4>Ladders</h4>
                     </div>
                 </a>
             </div>
         </div>
     </div>
 </section>
+
 
 <section class="featured section-padding">
 <div class="container">
@@ -154,27 +155,24 @@
 
 <div class="featured-box">
 <figure>
-<div class="icon">
-<span class="bg-green"><i class="lni-heart"></i></span>
-<span><i class="lni-bookmark"></i></span>
-</div>
-<a href="#"><img class="img-fluid" src="{{ asset($product->product_image) }}" alt=""></a>
+
+<a href="{{route('singleProduct.index', ['id'=>$product->id])}}"><img style="max-width: 200px; max-height:200px" class="img-fluid" src="{{ asset($product->product_image) }}" alt=""></a>
 </figure>
 <div class="feature-content">
 <div class="product">
 <a href="#">{{ $product->category->name }} </a>
-<a href="#">> Cameras</a>
+<a href="#">> {{ $product->name }}</a>
 </div>
-<h4><a href="ads-details.html">{{$product->name}}</a></h4>
+<h4><a href="{{route('singleProduct.index', ['id'=>$product->id])}}">{{$product->name}}</a></h4>
 <div class="meta-tag">
 <span>
-<a href="#"><i class="lni-user"></i> John Smith</a>
+<a href="#"><i class="lni-user"></i>{{ $product->user->name ?? 'Owner' }}</a>
 </span>
 <span>
-<a href="#"><i class="lni-map-marker"></i> New York, US</a>
+<a href="#"><i class="lni-map-marker"></i> {{ $product->user->address ?? 'Owner' }}</a>
 </span>
 <span>
-<a href="#"><i class="lni-tag"></i> Canon</a>
+<a href="#"><i class="lni-tag"></i>{{ $product->category->name ?? 'Category' }} </a>
 </span>
 </div>
 <p class="dsc">{{$product->description}}</p>
@@ -694,7 +692,7 @@
 </section> -->
 
 
-<section class="counter-section section-padding">
+{{-- <section class="counter-section section-padding">
 <div class="container">
 <div class="row">
 
@@ -731,7 +729,7 @@
 </div>
 </div>
 </div>
-</section>
+</section> --}}
 
 
 <section class="testimonial section-padding">
@@ -741,7 +739,7 @@
 <div id="testimonials" class="owl-carousel">
 <div class="item">
 <div class="img-thumb">
-<img style="height:130px;" src="{{ asset('assets/img/testimonial/img1.png')}}" alt="">
+<img src="{{ asset('assets/img/testimonial/img1.png')}}" alt="">
 </div>
 <div class="testimonial-item">
 <div class="content">

@@ -27,6 +27,10 @@ class CategoryFormRequest extends FormRequest
             'description' =>[
                 'required',
             ],
+
+            'slug' =>[
+                
+            ],
         ];
 
         return $rules;

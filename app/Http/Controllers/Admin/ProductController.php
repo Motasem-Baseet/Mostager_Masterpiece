@@ -31,7 +31,7 @@ class ProductController extends Controller
         'description' => 'required|string|max:1000',
         'price_per_day' => 'required|numeric|min:1',
         'status' => 'required|in:Available,Rented,Unavailable',
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         'quantity' => 'required|min:1|max:100'
     ]);
 

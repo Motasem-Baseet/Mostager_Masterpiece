@@ -97,7 +97,7 @@
 <label class="custom-control-label" for="product-{{$item->id}}"></label>
 </div>
 </td>
-<td class="photo"><img style="width: 80px; height:80px; object-fit: cover;" class="img-fluid" src="{{ asset($item->product_image) }}" alt="{{ $item->name }}" ></td>
+<td class="photo"><img style="width: 80px; height:80px; " class="img-fluid" src="{{ asset($item->product_image) }}" alt="{{ $item->name }}" ></td>
 <td data-title="Title">
 <h3>{{$item->name}}</h3>
 <span>Ad ID:{{$item->id}}</span>

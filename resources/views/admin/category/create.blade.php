@@ -42,6 +42,11 @@
                     <textarea name="description" class="form-control" id="description" rows="4" placeholder="Enter category description" required>{{ old('description') }}</textarea>
                 </div>
 
+                <div class="mb-3">
+                    <label for="slug" class="form-label">Description</label>
+                    <input type="text" name="slug" class="form-control" id="slug" placeholder="Enter category slug" value="{{ old('slug') }}" required>
+                </div>
+
                 <button type="submit" class="btn btn-primary btn-lg w-100">Save Category</button>
             </form>
 

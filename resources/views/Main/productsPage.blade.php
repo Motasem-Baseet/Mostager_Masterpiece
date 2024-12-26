@@ -31,37 +31,37 @@
                         <h4 class="widget-title">All Categories</h4>
                         <ul class="categories-list">
                             <li>
-                                <a href="#">
+                                <a href="{{ route('products.index', ['category' => 'Hand-Tools']) }}">
                                     <i class="lni-dinner"></i>
-                                    Hotel & Travels
+                                    Hand tools
                                     <span class="category-counter">(5)</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{route('products.index', ['category' => 'Electrical'])}}">
                                     <i class="lni-control-panel"></i>
-                                    Services
+                                    Electrical
                                     <span class="category-counter">(8)</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <i class="lni-github"></i>
-                                    Pets
+                                <a href="{{route('products.index', ['category' =>'General Safety'])}}">
+                                    <i class="fa-solid fa-fire-extinguisher"></i>
+                                    General Safety
                                     <span class="category-counter">(2)</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{route('products.index', ['category' =>'Gardening'])}}">
                                     <i class="lni-coffee-cup"></i>
-                                    Restaurants
+                                    Garedning
                                     <span class="category-counter">(3)</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{route('products.index', ['category' =>'Ladders'])}}">
                                     <i class="lni-home"></i>
-                                    Real Estate
+                                    Ladders
                                     <span class="category-counter">(4)</span>
                                 </a>
                             </li>
@@ -235,7 +235,7 @@
                                                 <span class="price-save">
                                                     {{ $product->discount ? $product->discount . '% Save' : '' }}
                                                 </span>
-                                                
+
                                                 <a href="#">
                                                     <img
                                                         class="img-fluid"

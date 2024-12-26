@@ -51,7 +51,11 @@
                             <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="string" class="form-control" name="address" value="" required>
+                                <select id="address" type="string" class="form-control" name="address" value="" required>
+                                <option value="Amman">Amman</option>
+                                <option value="Salt">Salt</option>
+                                <option value="Nauor">Naour</option>
+                                </select>
 <br>
                         </div>
 

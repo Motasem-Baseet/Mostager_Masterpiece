@@ -100,11 +100,11 @@
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="control-label">Address</label>
-                                        <input class="form-control input-md" name="address" type="text">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="control-label">City</label>
-                                        <input class="form-control input-md" name="city" type="text">
+                                        <select id="address" type="string" class="form-control" name="address" value="" required>
+                                            <option value="Amman">Amman</option>
+                                            <option value="Salt">Salt</option>
+                                            <option value="Nauor">Naour</option>
+                                        </select>
                                     </div>
                                     <button type="submit" class="btn btn-common">Update Profile</button>
                                 </div>

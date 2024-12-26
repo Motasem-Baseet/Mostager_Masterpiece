@@ -30,7 +30,7 @@
     </div>
     <span class="price" >{{$product->price_per_day}}</span>
     </div>
-    <div class="item">
+    {{-- <div class="item">
     <div class="product-img">
     <img class="img-fluid" src="assets/img/productinfo/img3.jpg" alt="">
     </div>
@@ -41,7 +41,7 @@
     <img class="img-fluid" src="assets/img/productinfo/img2.jpg" alt="">
     </div>
     <span class="price">$1,550</span>
-    </div>
+    </div> --}}
     </div>
     </div>
     <div class="details-box">
@@ -292,3 +292,33 @@
     </div>
     </div>
     </section>
+
+
+    <script>
+        // Disable past dates for both start and end date inputs
+        let currentDate = new Date().toISOString().slice(0, 16);
+        document.querySelector("#rental_start_date").setAttribute("min", currentDate);
+        document.querySelector("#rental_end_date").setAttribute("min", currentDate);
+
+        // Disable rented dates by comparing with already rented ranges
+        let rentedDates = @json($rentals); // Pass the rented dates from the controller
+
+        rentedDates.forEach(rental => {
+            let rentedStart = new Date(rental.rental_start_date);
+            let rentedEnd = new Date(rental.rental_end_date);
+
+            // Disable all dates in the rented range
+            let dateInputs = document.querySelectorAll("#rental_start_date, #rental_end_date");
+
+            dateInputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    let selectedDate = new Date(this.value);
+                    if (selectedDate >= rentedStart && selectedDate <= rentedEnd) {
+                        alert("This date is already rented.");
+                        this.value = ''; // Clear the input if date is within rented range
+                    }
+                });
+            });
+        });
+    </script>
+
