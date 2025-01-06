@@ -728,7 +728,6 @@ a.back-to-top:focus {
 }
 .search-bar .search-form {
     width: 100%;
-    float: left;
 }
 .search-bar .search-inner {
     background: #fff;

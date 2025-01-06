@@ -7,10 +7,9 @@
 <div class="widget">
 <div class="footer-logo"><img src="assets/img/logo.png" alt=""></div>
 <div class="textwidget">
-<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt consectetur, adipisci velit.</p>
 </div>
 <ul class="mt-3 footer-social">
-<li><a class="linkedin" href="#"><i class="lni-linkedin-fill"></i></a></li>
+<li><a style="padding-top: 5px" class="linkedin" href="#"><i class="lni-linkedin-fill"></i></a></li>
 </ul>
 </div>
 </div>
@@ -18,16 +17,9 @@
 <div class="widget">
 <h3 class="block-title">Quick Link</h3>
 <ul class="menu">
-<li><a href="#">- About Us</a></li>
-<li><a href="#">- Blog</a></li>
-<li><a href="#">- Events</a></li>
-<li><a href="#">- Shop</a></li>
-<li><a href="#">- FAQ's</a></li>
-<li><a href="#">- About Us</a></li>
-<li><a href="#">- Blog</a></li>
-<li><a href="#">- Events</a></li>
-<li><a href="#">- Shop</a></li>
-<li><a href="#">- FAQ's</a></li>
+<li><a href="{{url('main/aboutus')}}">- About Us</a></li>
+<li><a href="{{url('main/products')}}">- Shop</a></li>
+<li><a href="{{url('main/contactUs')}}">- Contact Us</a></li>
 </ul>
 </div>
 </div>
@@ -57,7 +49,6 @@
 <div class="row">
 <div class="col-md-12">
 <div class="site-info text-center">
-<p><a target="_blank" href="https://templateshub.net">Templates Hub</a></p>
 </div>
 </div>
 </div>
@@ -67,9 +58,6 @@
 </footer>
 
 
-<a href="#" class="back-to-top">
-<i class="lni-chevron-up"></i>
-</a>
 
 <div id="preloader">
 <div class="loader" id="loader-1"></div>

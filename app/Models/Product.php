@@ -28,4 +28,12 @@ class Product extends Model
         return $this->hasMany(Cart::class);
     }
 
+
+    public function rentals()
+    {
+        return $this->hasMany(Rental::class, 'product_id');
+    }
 }
+
+
+

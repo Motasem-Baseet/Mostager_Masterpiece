@@ -7,7 +7,7 @@
             <div class="col-lg-3 col-md-12 col-xs-12 page-sidebar">
                 <aside>
                     <div class="widget_search">
-                        <form role="search" id="search-form">
+                        <form role="search" id="search-form" action="{{ route('products.search') }}" method="GET">
                             <input
                                 type="search"
                                 class="form-control"
@@ -15,8 +15,7 @@
                                 name="s"
                                 placeholder="Search..."
                                 id="search-input"
-                                value=""
-                            />
+                                value="{{ request()->get('s', '') }}"   />
                             <button
                                 type="submit"
                                 id="search-submit"
@@ -25,6 +24,8 @@
                                 <i class="lni-search"></i>
                             </button>
                         </form>
+
+
                     </div>
 
                     <div class="widget categories">
@@ -233,7 +234,6 @@
                                         <div class="featured-box">
                                             <figure>
                                                 <span class="price-save">
-                                                    {{ $product->discount ? $product->discount . '% Save' : '' }}
                                                 </span>
 
                                                 <a href="#">

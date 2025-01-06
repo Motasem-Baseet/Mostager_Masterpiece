@@ -21,76 +21,38 @@
 <div class="sidebar-box">
 <div class="user">
 <figure>
-<a href="#"><img src="{{asset('assets/img/author/img1.jpg')}}" alt=""></a>
 </figure>
 <div class="usercontent">
-<h3>Hello William!</h3>
-<h4>Administrator</h4>
+<h3>Manage Your Items Here</h3>
+<h4></h4>
 </div>
 </div>
 <nav class="navdashboard">
 <ul>
 <li>
-<a class="active" href="dashboard.html">
+<a class="active" href="{{url('main/dashboard')}}">
 <i class="lni-dashboard"></i>
-<span>Dashboard</span>
+<span>Your Items</span>
 </a>
 </li>
 <li>
 <a href="{{url('main/profile-setting')}}">
 <i class="lni-cog"></i>
-<span>Profile Settings</span>
+<span>Post Ads</span>
 </a>
 </li>
 <li>
 
 <a href="{{url('main/profile-post')}}">
 <i class="lni-layers"></i>
-<span>My Ads</span>
+<span>Rented Items</span>
 </a>
 </li>
 <li>
 
-<a href="{{url('main/profile-messages')}}">
-<i class="lni-envelope"></i>
-<span>Offers/Messages</span>
-</a>
-</li>
-<li>
 
-<a href="{{url('main/profile-payment')}}">
-<i class="lni-wallet"></i>
-<span>Payments</span>
-</a>
-</li>
-<li>
 
-<a href="{{url('main/profile-favorite')}}">
-<i class="lni-heart"></i>
-<span>My Favourites</span>
-</a>
-</li>
-<li>
 
-<a href="{{url('main/profile-privatSetting')}}">
-<i class="lni-star"></i>
-<span>Privacy Settings</span>
-</a>
-</li>
-<li>
-<a href="#">
-<i class="lni-enter"></i>
-<span>Logout</span>
-</a>
-</li>
-</ul>
-</nav>
-</div>
-<div class="widget">
-<h4 class="widget-title">Advertisement</h4>
-<div class="add-box">
-<img class="img-fluid" src="assets/img/img1.jpg" alt="">
-</div>
 </div>
 </aside>
 </div>

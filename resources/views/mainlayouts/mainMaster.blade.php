@@ -52,6 +52,8 @@
 <script type="text/javascript" src="{{URL::asset('assets/js/checkout.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('assets/js/message.js')}}"></script>
 <script src="{{URL::asset('cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')}}"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=JOD"></script>
+
 {{-- <script src="{{URL::asset('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js')"></script> --}}
 
 

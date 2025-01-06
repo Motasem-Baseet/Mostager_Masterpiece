@@ -6,6 +6,8 @@ use App\Models\Product;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB; // Add this line
+
 
 class ProductsController extends Controller
 {
@@ -25,5 +27,30 @@ class ProductsController extends Controller
         return view('main.productsPage', compact('products'));
     }
 
+    public function search(Request $request)
+    {
+        $query = DB::table('products');
+
+        if ($request->filled('customword')) {
+            $query->where('name', 'like', '%' . $request->customword . '%');
+        }
+
+        if ($request->filled('location')) {
+            $query->where('location', $request->location);
+        }
+
+        if ($request->filled('category')) {
+            $query->where('category_id', $request->category);
+        }
+
+        $products = $query->get();
+
+
+
+        return view('main.productsPage', compact('products'));
+    }
+
+
+    
 
 }

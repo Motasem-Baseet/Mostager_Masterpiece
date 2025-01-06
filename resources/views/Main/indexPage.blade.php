@@ -6,24 +6,24 @@
 @else
     <p>No user is currently logged in.</p>
 @endif --}}
-<div id="main-slide" class="carousel slide" data-ride="carousel">
+<div style="" id="main-slide" class="carousel slide" data-ride="carousel">
 <div class="carousel-inner">
 <div class="carousel-item active">
-<img class="d-block w-100" src="{{ asset('assets/img/slider/background2.jpg')}}" alt="First slide">
+<img style="max-height:570px" class="d-block w-100" src="{{ asset('assets/img/slider/background2.jpg')}}" alt="First slide">
 <div class="carousel-caption d-md-block">
 <h1 class="animated wow fadeInDown hero-heading" data-wow-delay=".4s">Welcome to The Largest Marketplace</h1>
 <p class="animated fadeInUp wow hero-sub-heading" data-wow-delay=".6s">Rent and hire everything, or search for property and more</p>
 </div>
 </div>
 <div class="carousel-item">
-<img class="d-block w-100" src="{{asset('assets/img/slider/background2.jpg')}}" alt="Second slide">
+<img style="max-height:570px" class="d-block w-100" src="{{asset('assets/img/slider/background2.jpg')}}" alt="Second slide">
 <div class="carousel-caption d-md-block">
 <h1 class="animated wow fadeInLeft hero-heading" data-wow-delay=".7s">Post Free</h1>
 <!-- <p class="animated wow fadeInRight hero-sub-heading" data-wow-delay=".9s">Buy and sell everything from used cars to mobile phones and computers, or search for property, jobs and more</p> -->
 </div>
 </div>
 <div class="carousel-item">
-<img class="d-block w-100" src="{{ asset('assets/img/slider/background2.jpg')}}" alt="Third slide">
+<img style="max-height:570px" class="d-block w-100" src="{{ asset('assets/img/slider/background2.jpg')}}" alt="Third slide">
 <div class="carousel-caption d-md-block">
 <h1 class="animated wow fadeInDown hero-heading" data-wow-delay=".6s">Get More Rewards and More Exposure</h1>
 <p class="animated fadeInUp wow hero-sub-heading" data-wow-delay=".8s">Rent and hire everything, or search for property and more</p>
@@ -42,48 +42,44 @@
 
 
 <div class="search-button">
-<div class="container">
-<div class="row">
-<div class="col-md-12 col-lg-12 col-xs-12">
-<div class="search-bar">
-<div class="search-inner">
-<form class="search-form">
-<div class="form-group inputwithicon">
-<i class="lni-tag"></i>
-<input type="text" name="customword" class="form-control" placeholder="What are you looking for?">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-xs-12">
+                <div class="search-bar">
+                    <div class="search-inner">
+                        <form class="search-form" action="{{ route('products.search') }}" method="GET">
+                            <!-- Search by Name -->
+                            <div class="form-group inputwithicon">
+                                <i class="lni-tag"></i>
+                                <input type="text" name="customword" class="form-control" placeholder="What are you looking for?">
+                            </div>
+
+
+                            <!-- Category Dropdown -->
+                            <div class="form-group inputwithicon">
+                                <i class="lni-menu"></i>
+                                <div class="select">
+                                    <select name="category" class="form-control">
+                                        <option value="">Select Category</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button class="btn btn-common" type="submit">
+                                <i class="lni-search"></i> Search Now
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="form-group inputwithicon">
-<i class="lni-target"></i>
-<div class="select">
-<select>
-<option value="none">Locations</option>
-<option value="none">Amman</option>
-<!-- <option value="none">California</option>
-<option value="none">Washington</option>
-<option value="none">Birmingham</option>
-<option value="none">Chicago</option>
-<option value="none">Phoenix</option> -->
-</select>
-</div>
-</div>
-<div class="form-group inputwithicon">
-<i class="lni-menu"></i>
- <div class="select">
-<select>
-<option value="none">Select Catagory</option>
-<option value="none">Tools and equipment</option>
-<option value="none">Electrical & endustrials</option>
-</select>
-</div>
-</div>
-<button class="btn btn-common" type="button"><i class="lni-search"></i> Search Now</button>
-</form>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+
 
 
 <section class="categories-icon bg-light section-padding">
@@ -91,7 +87,7 @@
         <h1 class="section-title">Search By Category</h1>
         <div class="row">
             <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-                <a href="{{ route('products.index', ['category' => 'Hand-Tools']) }}">
+                <a  href="{{ route('products.index', ['category' => 'Hand-Tools']) }}">
                     <div class="icon-box">
                         <div class="icon">
                             <i class="fa-solid fa-screwdriver-wrench"></i>
@@ -156,7 +152,7 @@
 <div class="featured-box">
 <figure>
 
-<a href="{{route('singleProduct.index', ['id'=>$product->id])}}"><img style="max-width: 200px; max-height:200px" class="img-fluid" src="{{ asset($product->product_image) }}" alt=""></a>
+<a href="{{route('singleProduct.index', ['id'=>$product->id])}}"><img style="width: 250px; max-height:200px" class="img-fluid" src="{{ asset($product->product_image) }}" alt=""></a>
 </figure>
 <div class="feature-content">
 <div class="product">
@@ -484,55 +480,6 @@
 </section>
 
 
-<div class="call-back section-padding bg-light">
-<div class="container">
-<h4>Contact Us</h4>
-<form action="POST" action="{{route('contact.submit')}}'">
-    @csrf
-
-<div class="row">
-<div class="col-lg-8 col-md-6 col-xs-12">
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-<div class="form-group has-error">
-<input type="text" class="form-control" id="name" name="name" placeholder="Name">
-</div>
-</div>
-<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-<div class="form-group has-error">
-<input type="text" class="form-control" placeholder="catagory">
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-<div class="form-group has-error">
-<input type="text" class="form-control" id="phone" name="name" placeholder="Phone">
-</div>
-</div>
-<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-<div class="form-group has-error">
-<input type="email" class="form-control" id="email" placeholder="Email">
-</div>
-</div>
-</div>
-<button type="submit" class="btn btn-common">Send</button>
-</div>
-<div class="col-lg-4 col-md-6 col-xs-12">
-<div class="call-us">
-<div class="icon">
-<i class="lni-phone"></i>
-</div>
-<div class="contact-text">
-<span>Get Free Update</span>
-<h5 class="phone-num">+962 681 747 224</h5>
-</div>
-</div>
-</div>
-</div>
-</form>
-</div>
-</div>
 
 
 <!-- <section class="services section-padding">

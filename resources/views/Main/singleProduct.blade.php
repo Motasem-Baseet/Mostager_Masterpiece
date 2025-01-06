@@ -49,8 +49,8 @@
     <h2>{{$product->name}}</h2>
     <div class="details-meta">
     <span><a href="#"><i class="lni-alarm-clock"></i> {{$product->created_at}}</a></span>
-    <span><a href="#"><i class="lni-map-marker"></i> New York</a></span>
-    <span><a href="#"><i class="lni-eye"></i> 299 View</a></span>
+    <span><a href="#"><i class="lni-map-marker"></i> {{$product->user->address}}</a></span>
+    <span><a href="#"><i class="fa-solid fa-phone"></i> {{$product->user->phone}}</a></span>
     </div>
     <p class="mb-4">{{$product->description}}</p>
     <h4 class="title-small mb-3">Specification:</h4>
@@ -293,32 +293,59 @@
     </div>
     </section>
 
+    <!-- Rental Alert Modal -->
+<div  id="rentalModal" class="modal">
+    <div style="background-color: :brown" class="modal-content">
+        <span class="close">&times;</span>
+        <p style="color: red">This date is already rented.</p>
+    </div>
+</div>
 
-    <script>
-        // Disable past dates for both start and end date inputs
-        let currentDate = new Date().toISOString().slice(0, 16);
-        document.querySelector("#rental_start_date").setAttribute("min", currentDate);
-        document.querySelector("#rental_end_date").setAttribute("min", currentDate);
 
-        // Disable rented dates by comparing with already rented ranges
-        let rentedDates = @json($rentals); // Pass the rented dates from the controller
+<script>
+    // Disable past dates for both start and end date inputs
+    let currentDate = new Date().toISOString().slice(0, 16);
+    document.querySelector("#rental_start_date").setAttribute("min", currentDate);
+    document.querySelector("#rental_end_date").setAttribute("min", currentDate);
 
-        rentedDates.forEach(rental => {
-            let rentedStart = new Date(rental.rental_start_date);
-            let rentedEnd = new Date(rental.rental_end_date);
+    // Disable rented dates by comparing with already rented ranges
+    let rentedDates = @json($rentals); // Pass the rented dates from the controller
 
-            // Disable all dates in the rented range
-            let dateInputs = document.querySelectorAll("#rental_start_date, #rental_end_date");
+    rentedDates.forEach(rental => {
+        let rentedStart = new Date(rental.rental_start_date);
+        let rentedEnd = new Date(rental.rental_end_date);
 
-            dateInputs.forEach(input => {
-                input.addEventListener('input', function() {
-                    let selectedDate = new Date(this.value);
-                    if (selectedDate >= rentedStart && selectedDate <= rentedEnd) {
-                        alert("This date is already rented.");
-                        this.value = ''; // Clear the input if date is within rented range
-                    }
-                });
+        // Disable all dates in the rented range
+        let dateInputs = document.querySelectorAll("#rental_start_date, #rental_end_date");
+
+        dateInputs.forEach(input => {
+            input.addEventListener('input', function() {
+                let selectedDate = new Date(this.value);
+                if (selectedDate >= rentedStart && selectedDate <= rentedEnd) {
+                    showModal();  // Show the rental message in modal
+                    this.value = ''; // Clear the input if date is within rented range
+                }
             });
         });
-    </script>
+    });
+
+    // Modal functionality
+    function showModal() {
+        let modal = document.getElementById("rentalModal");
+        modal.style.display = "block"; // Show modal
+
+        let closeBtn = document.querySelector(".close");
+        closeBtn.onclick = function() {
+            modal.style.display = "none"; // Close modal when close button is clicked
+        }
+
+        // Close the modal when clicked outside
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none"; // Close modal if user clicks outside
+            }
+        }
+    }
+</script>
+
 

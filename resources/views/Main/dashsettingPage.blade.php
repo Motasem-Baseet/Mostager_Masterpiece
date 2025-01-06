@@ -86,31 +86,35 @@
                                     <h2 class="dashbord-title">Contact Detail</h2>
                                 </div>
                                 <div class="dashboard-wrapper">
-                                    <div class="form-group mb-3">
-                                        <label class="control-label">First Name*</label>
-                                        <input class="form-control input-md" name="first_name" type="text">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="control-label">Last Name*</label>
-                                        <input class="form-control input-md" name="last_name" type="text">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="control-label">Phone*</label>
-                                        <input class="form-control input-md" name="phone" type="text">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="control-label">Address</label>
-                                        <select id="address" type="string" class="form-control" name="address" value="" required>
-                                            <option value="Amman">Amman</option>
-                                            <option value="Salt">Salt</option>
-                                            <option value="Nauor">Naour</option>
-                                        </select>
-                                    </div>
-                                    <button type="submit" class="btn btn-common">Update Profile</button>
+                                    <form method="POST" action="{{ route('user.updateProfile') }}">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="form-group mb-3">
+                                            <label class="control-label">First Name*</label>
+                                            <input class="form-control input-md" name="first_name" type="text"
+                                                   value="{{ old('first_name', auth()->user()->first_name) }}" required>
+                                        </div>
+                                       
+                                        <div class="form-group mb-3">
+                                            <label class="control-label">Phone*</label>
+                                            <input class="form-control input-md" name="phone" type="text"
+                                                   value="{{ old('phone', auth()->user()->phone) }}" required>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="control-label">Address</label>
+                                            <select id="address" class="form-control" name="address" required>
+                                                <option value="Amman" {{ auth()->user()->address == 'Amman' ? 'selected' : '' }}>Amman</option>
+                                                <option value="Salt" {{ auth()->user()->address == 'Salt' ? 'selected' : '' }}>Salt</option>
+                                                <option value="Nauor" {{ auth()->user()->address == 'Nauor' ? 'selected' : '' }}>Naour</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-common">Update Profile</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

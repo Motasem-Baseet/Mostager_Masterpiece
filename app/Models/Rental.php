@@ -11,13 +11,13 @@ class Rental extends Model
 
     protected $fillable = [
         'product_id', 'owner_id', 'renter_id', 'status',
-        'rental_start_date', 'rental_end_date', 'price', 'deposit'
+        'rental_start_date', 'rental_end_date', 'price', 'deposit', 
     ];
 
 
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class, 'product_id');
     }
 
     public function owner()

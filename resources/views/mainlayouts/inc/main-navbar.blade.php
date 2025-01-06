@@ -1,9 +1,5 @@
 
 
-
-
-
-
 <nav class="navbar navbar-expand-lg bg-white fixed-top scrolling-navbar">
 <div class="container">
 
@@ -23,10 +19,7 @@
 <a class="nav-link " href="{{url('main/index')}}">
 Home
 </a>
-<div class="dropdown-menu">
-<!-- <a class="dropdown-item" href="index-2.html">Home 1</a> -->
-<!-- <a class="dropdown-item active" href="index-3.html">Home 2</a> -->
-</div>
+
 </li>
 <li class="nav-item">
 <a class="nav-link" href="{{url('main/products')}}">
@@ -49,13 +42,11 @@ Pages
 </a>
 <div class="dropdown-menu">
 <a class="dropdown-item" href="{{url('main/about-us')}}">About Us</a>
-<a class="dropdown-item" href="{{url('main/services')}}">Services</a>
+<a class="dropdown-item" href="{{url('main/contactUs')}}">Contact</a>
 <!-- <a class="dropdown-item" href="ads-details.html">Ads Details</a> -->
 <!-- <a class="dropdown-item" href="post-ads.html">Ads Post</a> -->
 <!-- <a class="dropdown-item" href="pricing.html">Packages</a> -->
 <!-- <a class="dropdown-item" href="testimonial.html">Testimonial</a> -->
-<a class="dropdown-item" href="{{url('main/faq')}}">FAQ</a>
-<a class="dropdown-item" href="404.html">404</a>
 </div>
 </li>
 <!-- <li class="nav-item dropdown">
@@ -69,11 +60,7 @@ Blog
 <a class="dropdown-item" href="single-post.html">Blog Details</a>
 </div>
 </li> -->
-<li class="nav-item">
-<a class="nav-link" href="{{url('main/contactUs')}}">
-Contact
-</a>
-</li>
+
 </ul>
 <div class="post-btn">
 <a class="btn btn-common" href="{{url('main/dashboard')}}"><i class="lni-pencil-alt"></i> Post Ad </a>

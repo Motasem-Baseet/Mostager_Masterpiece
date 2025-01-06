@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PayPalController;
+
 
 
 
@@ -65,59 +67,47 @@ Route::resource('rentals', App\Http\Controllers\Admin\RentalController::class);
 
 });
 
-Route::prefix('main')->middleware(['auth'])->group(function (){
+Route::prefix('main')->group(function () {
 
+    // Public routes (no login required)
     Route::get('/index', [App\Http\Controllers\Main\MainController::class, 'index']);
-
     Route::get('/products', [App\Http\Controllers\Main\ProductsController::class, 'index'])->name('products.index');
-
-
     Route::get('/about-us', [App\Http\Controllers\Main\AboutUsController::class, 'index']);
-
     Route::get('/services', [App\Http\Controllers\Main\servicesController::class, 'index']);
     Route::get('/faq', [App\Http\Controllers\Main\FaqController::class, 'index']);
 
-    Route::get('/dashboard', [App\Http\Controllers\Main\dashboardController::class, 'index']);
+    Route::get('login', [App\Http\Controllers\Main\LoginController::class, 'index']);
+    Route::get('/forgetPass', [App\Http\Controllers\Main\ForgetPassController::class, 'index']);
+    Route::get('register', [App\Http\Controllers\Main\RegisterController::class, 'index']);
+    Route::get('contactUs', [App\Http\Controllers\Main\ContactUsController::class, 'index']);
+    Route::get('/single-product/{id}', [App\Http\Controllers\singleProductcontoller::class, 'index'])->name('singleProduct.index');
+    Route::post('/single-product/{id}', [App\Http\Controllers\singleProductcontoller::class, 'index']);
+    Route::get('/cart', [App\Http\Controllers\Main\CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/add', [App\Http\Controllers\Main\CartController::class, 'addToCart'])->name('cart.add');
+    Route::put('/cart/update/{id}', [App\Http\Controllers\Main\CartController::class, 'update'])->name('cart.update');
+    Route::delete('/cart/{id}', [App\Http\Controllers\Main\CartController::class, 'removeFromCart'])->name('cart.remove');
+    Route::post('/messages', [App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
+    Route::get('/messages/{receiverId}', [App\Http\Controllers\MessageController::class, 'fetchMessages'])->name('messages.fetch');
+    Route::get('/search', [App\Http\Controllers\Main\ProductsController::class, 'search'])->name('products.search');
+    Route::get('/contact', function() {
+        return view('main.indexPage');
+    })->name('contact');
+    Route::post('/contact', [App\Http\Controllers\Main\ContactController::class, 'submit'])->name('contact.submit');
 
+    // Authenticated route for checkout
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/checkout', [App\Http\Controllers\Main\CheckoutController::class, 'index'])->name('checkout.index');
+        Route::post('/checkout/process', [App\Http\Controllers\Main\CheckoutController::class, 'processCheckout'])->name('checkout.process');
+        Route::get('/dashboard', [App\Http\Controllers\Main\dashboardController::class, 'index']);
     Route::get('/profile-post', [App\Http\Controllers\Main\ProfilepostController::class, 'index']);
     Route::get('/profile-payment', [App\Http\Controllers\Main\ProfilePaymentController::class, 'index']);
     Route::get('/profile-favorite', [App\Http\Controllers\Main\ProfileFavoriteController::class, 'index']);
     Route::get('/profile-privatSetting', [App\Http\Controllers\Main\ProfilePrivateSettingController::class, 'index']);
+    Route::match(['get', 'post'], '/profile-setting', [App\Http\Controllers\Main\DashSettingController::class, 'handleRequest'])->name('main.dashsettingPage');
     Route::get('/profile-messages', [App\Http\Controllers\Main\ProfileMessageController::class, 'index']);
 
-    Route::get('login', [App\Http\Controllers\Main\LoginController::class, 'index']);
-    Route::get('/forgetPass', [App\Http\Controllers\Main\ForgetPassController::class, 'index']);
+    Route::put('/profile/update', [App\Http\Controllers\Main\DashSettingController::class, 'updateProfile'])->name('user.updateProfile');
 
-    Route::get('register', [App\Http\Controllers\Main\RegisterController::class, 'index']);
+    });
 
-    Route::get('contactUs', [App\Http\Controllers\Main\ContactUsController::class, 'index']);
-
-
-Route::match(['get', 'post'], '/profile-setting', [App\Http\Controllers\Main\DashSettingController::class, 'handleRequest'])->name('main.dashsettingPage');
-
-Route::get('/single-product/{id}',[App\Http\Controllers\singleProductcontoller::class, 'index'] )->name('singleProduct.index');
-Route::post('/single-product/{id}',[App\Http\Controllers\singleProductcontoller::class, 'index'] );
-
-Route::get('/cart',[App\Http\Controllers\Main\CartController::class, 'index'] )->name('cart.index');
-Route::post('/cart/add', [App\Http\Controllers\Main\CartController::class, 'addToCart'])->name('cart.add');
-Route::put('/cart/update/{id}', [App\Http\Controllers\Main\CartController::class, 'update'])->name('cart.update');
-Route::delete('/cart/{id}', [App\Http\Controllers\Main\CartController::class, 'removeFromCart'])->name('cart.remove');
-
-// Route::get('profile', [App\Http\Controllers\Main\UsersController::class, 'editProfile'])->name('user.editProfile');
-// Route::post('profile/update', [App\Http\Controllers\Main\UsersController::class, 'updateProfile'])->name('user.updateProfile');
-
-
-Route::get('/checkout', [App\Http\Controllers\Main\CheckoutController::class, 'index'])->name('checkout.index');
-Route::post('/checkout/process', [App\Http\Controllers\Main\CheckoutController::class, 'processCheckout'])->name('checkout.process');
-
-Route::post('/messages', [App\Http\Controllers\MessageController::class, 'store'])->name('messages.store');
-Route::get('/messages/{receiverId}', [App\Http\Controllers\MessageController::class, 'fetchMessages'])->name('messages.fetch');
-
-
-
-
-    Route::get('/contact', function(){
-        return view('main.indexPage');
-    })->name('contact');
-    Route::post('/contact', [App\Http\Controllers\Main\ContactController::class, 'submit'])->name('contact.submit');
 });

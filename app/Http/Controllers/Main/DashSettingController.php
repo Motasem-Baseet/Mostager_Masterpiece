@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Main;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+
 
 class DashSettingController extends Controller
 {
@@ -51,4 +55,31 @@ class DashSettingController extends Controller
             return redirect()->route('main.dashsettingPage')->with('success', 'Product created successfully.');
         }
     }
+
+    public function updateProfile(Request $request)
+{
+    // Validate the input
+    $request->validate([
+        'name' => 'required|string|max:255', // Updated to use 'name' instead of 'first_name' and 'last_name'
+        'phone' => 'required|string|max:15',
+        'address' => 'required|string|max:255',
+    ]);
+
+    // Get the currently authenticated user
+    $user = Auth::user();
+    dd($user); // This will dump the user object to check its structure and values
+
+
+    // Update the user profile information
+    $user->name = $request->name;
+    $user->phone = $request->phone;
+    $user->address = $request->address;
+
+    // Save the updated user
+    $user->save();
+
+    // Redirect back with a success message
+    return redirect()->back()->with('success', 'Profile updated successfully!');
+}
+
 }

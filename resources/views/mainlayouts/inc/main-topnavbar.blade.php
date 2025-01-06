@@ -13,9 +13,19 @@
 <div class="roof-social float-right">
 <a class="linkedin" href="https://www.linkedin.com/in/motasem-baseet/"><i style="padding-top:12px;" class="lni-linkedin-fill"></i></a>
 </div>
-<div class="header-top-right float-right">
-<a href="{{url('main/login')}}" class="header-top-button"><i class="lni-lock"></i> Log In</a> |
-<a href="{{url('main/register')}}" class="header-top-button"><i class="lni-pencil"></i> Register</a>
+<div  style="padding-top: 10px" class="header-top-right float-right">
+    @if(Auth::check()) <!-- Check if the user is logged in -->
+    <a href="{{ route('logout') }}" class="header-top-button"
+       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        <i class="lni-lock"></i> Log Out
+    </a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+@else
+    <a href="{{ url('login') }}" class="header-top-button"><i class="lni-lock"></i> Log In</a> |
+    <a href="{{ url('register') }}" class="header-top-button"><i class="lni-pencil"></i> Register</a>
+@endif
 </div>
 </div>
 </div>
