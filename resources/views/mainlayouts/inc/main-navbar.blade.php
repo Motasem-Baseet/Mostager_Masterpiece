@@ -62,6 +62,9 @@ Blog
 </li> -->
 
 </ul>
+<div style="padding:15px;">
+    <a href="{{url('main/cart')}}"><i class="fa-solid fa-cart-shopping" style="font-size: 24px; color: black;"></i></a>
+</div>
 <div class="post-btn">
 <a class="btn btn-common" href="{{url('main/dashboard')}}"><i class="lni-pencil-alt"></i> Post Ad </a>
 </div>

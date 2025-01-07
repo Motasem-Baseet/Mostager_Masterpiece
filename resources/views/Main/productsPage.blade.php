@@ -7,23 +7,7 @@
             <div class="col-lg-3 col-md-12 col-xs-12 page-sidebar">
                 <aside>
                     <div class="widget_search">
-                        <form role="search" id="search-form" action="{{ route('products.search') }}" method="GET">
-                            <input
-                                type="search"
-                                class="form-control"
-                                autocomplete="off"
-                                name="s"
-                                placeholder="Search..."
-                                id="search-input"
-                                value="{{ request()->get('s', '') }}"   />
-                            <button
-                                type="submit"
-                                id="search-submit"
-                                class="search-btn"
-                            >
-                                <i class="lni-search"></i>
-                            </button>
-                        </form>
+                       
 
 
                     </div>
@@ -35,61 +19,44 @@
                                 <a href="{{ route('products.index', ['category' => 'Hand-Tools']) }}">
                                     <i class="lni-dinner"></i>
                                     Hand tools
-                                    <span class="category-counter">(5)</span>
+                                    <span class="category-counter"></span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{route('products.index', ['category' => 'Electrical'])}}">
                                     <i class="lni-control-panel"></i>
                                     Electrical
-                                    <span class="category-counter">(8)</span>
+                                    <span class="category-counter"></span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{route('products.index', ['category' =>'General Safety'])}}">
                                     <i class="fa-solid fa-fire-extinguisher"></i>
                                     General Safety
-                                    <span class="category-counter">(2)</span>
+                                    <span class="category-counter"></span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{route('products.index', ['category' =>'Gardening'])}}">
                                     <i class="lni-coffee-cup"></i>
                                     Garedning
-                                    <span class="category-counter">(3)</span>
+                                    <span class="category-counter"></span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{route('products.index', ['category' =>'Ladders'])}}">
                                     <i class="lni-home"></i>
                                     Ladders
-                                    <span class="category-counter">(4)</span>
+                                    <span class="category-counter"></span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#">
-                                    <i class="lni-pencil"></i>
-                                    Jobs
-                                    <span class="category-counter">(5)</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="lni-display"></i>
-                                    Electronics
-                                    <span class="category-counter">(9)</span>
-                                </a>
-                            </li>
+
+
                         </ul>
                     </div>
                     <div class="widget">
-                        <h4 class="widget-title">Advertisement</h4>
                         <div class="add-box">
-                            <img
-                                class="img-fluid"
-                                src="{{asset('assets/img/img1.jpg')}}"
-                                alt=""
-                            />
+
                         </div>
                     </div>
                 </aside>
@@ -97,39 +64,11 @@
             <div class="col-lg-9 col-md-12 col-xs-12 page-content">
                 <div class="product-filter">
                     <div class="short-name">
-                        <span>Showing (1 - 12 products of 7371 products)</span>
                     </div>
-                    <div class="Show-item">
-                        <span>Show Items</span>
-                        <form class="woocommerce-ordering" method="post">
-                            <label>
-                                <select name="order" class="orderby">
-                                    <option
-                                        selected="selected"
-                                        value="menu-order"
-                                    >
-                                        49 items
-                                    </option>
-                                    <option value="popularity">
-                                        popularity
-                                    </option>
-                                    <option value="popularity">
-                                        Average ration
-                                    </option>
-                                    <option value="popularity">newness</option>
-                                    <option value="popularity">price</option>
-                                </select>
-                            </label>
-                        </form>
-                    </div>
+
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a
-                                class="nav-link"
-                                data-toggle="tab"
-                                href="#grid-view"
-                                ><i class="lni-grid"></i
-                            ></a>
+
                         </li>
                         <li class="nav-item">
                             <a
@@ -233,8 +172,7 @@
                                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                         <div class="featured-box">
                                             <figure>
-                                                <span class="price-save">
-                                                </span>
+
 
                                                 <a href="#">
                                                     <img

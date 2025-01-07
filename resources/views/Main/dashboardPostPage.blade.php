@@ -47,6 +47,7 @@
 
 
                                         <td data-title="Title">
+
                                             <h3>{{ $rental->product->name }}</h3>
                                         </td>
                                         <td data-title="Category"><span class="adcategories">{{ $rental->product->category->name }}</span></td>

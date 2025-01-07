@@ -42,6 +42,10 @@
                     <label for="description" class="form-label">Category Description</label>
                     <textarea name="description" id="description" class="form-control" rows="4" placeholder="Enter category description" required>{{ old('description', $category->description) }}</textarea>
                 </div>
+                <div class="mb-3">
+                    <label for="slug" class="form-label">Category Description</label>
+                    <input name="slug" id="slug" class="form-control"  placeholder="Enter category slug" required>{{ old('slug', $category->slug) }}</input>
+                </div>
 
                 <button type="submit" class="btn btn-primary btn-lg w-100">Update Category</button>
             </form>

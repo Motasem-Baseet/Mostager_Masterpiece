@@ -53,16 +53,7 @@
     <span><a href="#"><i class="fa-solid fa-phone"></i> {{$product->user->phone}}</a></span>
     </div>
     <p class="mb-4">{{$product->description}}</p>
-    <h4 class="title-small mb-3">Specification:</h4>
-    <ul class="list-specification">
-    <li><i class="lni-check-mark-circle"></i> 256GB PCIe flash storage</li>
-    <li><i class="lni-check-mark-circle"></i> 2.7 GHz dual-core Intel Core i5</li>
-    <li><i class="lni-check-mark-circle"></i> Turbo Boost up to 3.1GHz</li>
-    <li><i class="lni-check-mark-circle"></i> Intel Iris Graphics 6100</li>
-    <li><i class="lni-check-mark-circle"></i> 8GB memory</li>
-    <li><i class="lni-check-mark-circle"></i> 10 hour battery life</li>
-    <li><i class="lni-check-mark-circle"></i> 13.3" Retina Display</li>
-    <li><i class="lni-check-mark-circle"></i> 1 Year international warranty</li>
+
     </ul>
     <p class="mb-4">
     Up for sale we have a vintage Raleigh Sport Men’s Bicycle. This bike does have some general wear and surface corrosion on some of the parts but is overall in good shape. It has been checked out and does work. Brakes and gears work. Seat is fully intact. Frame and fenders are in nice shape with minimal wear. A few minor dents in the fenders but most of the paint is intact.
@@ -72,23 +63,17 @@
     <div class="float-left">
     <ul class="advertisement">
     <li>
-    <p><strong><i class="lni-folder"></i> Categories:</strong> <a href="#">Electronics</a></p>
     </li>
     <li>
-    <p><strong><i class="lni-archive"></i> Condition:</strong> New</p>
     </li>
     <li>
-    <p><strong><i class="lni-package"></i> Brand:</strong> <a href="#">Apple</a></p>
     </li>
     </ul>
     </div>
     <div class="float-right">
     <div class="share">
     <div class="social-link">
-    <a class="facebook" data-toggle="tooltip" data-placement="top" title="facebook" href="#"><i class="lni-facebook-filled"></i></a>
-    <a class="twitter" data-toggle="tooltip" data-placement="top" title="twitter" href="#"><i class="lni-twitter-filled"></i></a>
-    <a class="linkedin" data-toggle="tooltip" data-placement="top" title="linkedin" href="#"><i class="lni-linkedin-fill"></i></a>
-    <a class="google" data-toggle="tooltip" data-placement="top" title="google plus" href="#"><i class="lni-google-plus"></i></a>
+
     </div>
     </div>
     </div>
@@ -148,115 +133,7 @@
       </div>
     </div>
 
-    <div class="widget">
-    <h4 class="widget-title">More Ads From Seller</h4>
-    <ul class="posts-list">
-    <li>
-    <div class="widget-thumb">
-    <a href="#"><img src="assets/img/details/img1.jpg" alt="" /></a>
-    </div>
-    <div class="widget-content">
-    <h4><a href="#">Little Harbor Yacht 38</a></h4>
-     <div class="meta-tag">
-    <span>
-    <a href="#"><i class="lni-user"></i> Smith</a>
-    </span>
-    <span>
-    <a href="#"><i class="lni-map-marker"></i> New Your</a>
-    </span>
-    <span>
-    <a href="#"><i class="lni-tag"></i> Radio</a>
-    </span>
-    </div>
-    <h4 class="price">$480.00</h4>
-    </div>
-    <div class="clearfix"></div>
-    </li>
-    <li>
-    <div class="widget-thumb">
-    <a href="#"><img src="assets/img/details/img2.jpg" alt="" /></a>
-    </div>
-    <div class="widget-content">
-    <h4><a href="#">Little Harbor Yacht 38</a></h4>
-    <div class="meta-tag">
-    <span>
-    <a href="#"><i class="lni-user"></i> Smith</a>
-    </span>
-    <span>
-    <a href="#"><i class="lni-map-marker"></i> New Your</a>
-    </span>
-    <span>
-    <a href="#"><i class="lni-tag"></i> Radio</a>
-    </span>
-    </div>
-    <h4 class="price">$480.00</h4>
-    </div>
-    <div class="clearfix"></div>
-    </li>
-    <li>
-    <div class="widget-thumb">
-    <a href="#"><img src="assets/img/details/img3.jpg" alt="" /></a>
-    </div>
-    <div class="widget-content">
-    <h4><a href="#">Little Harbor Yacht 38</a></h4>
-    <div class="meta-tag">
-    <span>
-    <a href="#"><i class="lni-user"></i> Smith</a>
-    </span>
-    <span>
-    <a href="#"><i class="lni-map-marker"></i> New Your</a>
-    </span>
-    <span>
-    <a href="#"><i class="lni-tag"></i> Radio</a>
-    </span>
-    </div>
-    <h4 class="price">$480.00</h4>
-    </div>
-    <div class="clearfix"></div>
-    </li>
-    <li>
-    <div class="widget-thumb">
-    <a href="#"><img src="assets/img/details/img4.jpg" alt="" /></a>
-    </div>
-    <div class="widget-content">
-    <h4><a href="#">Little Harbor Yacht 38</a></h4>
-    <div class="meta-tag">
-    <span>
-    <a href="#"><i class="lni-user"></i> Smith</a>
-    </span>
-    <span>
-    <a href="#"><i class="lni-map-marker"></i> New Your</a>
-    </span>
-    <span>
-    <a href="#"><i class="lni-tag"></i> Radio</a>
-    </span>
-    </div>
-    <h4 class="price">$480.00</h4>
-    </div>
-    <div class="clearfix"></div>
-    </li>
-    <li>
-    <div class="widget-thumb">
-    <a href="#"><img src="assets/img/details/img5.jpg" alt="" /></a>
-    </div>
-    <div class="widget-content">
-    <h4><a href="#">Little Harbor Yacht 38</a></h4>
-    <div class="meta-tag">
-    <span>
-    <a href="#"><i class="lni-user"></i> Smith</a>
-    </span>
-    <span>
-     <a href="#"><i class="lni-map-marker"></i> New Your</a>
-    </span>
-    <span>
-    <a href="#"><i class="lni-tag"></i> Radio</a>
-    </span>
-    </div>
-    <h4 class="price">$480.00</h4>
-    </div>
-    <div class="clearfix"></div>
-    </li>
-    </ul>
+   
     </div>
     </aside>
 
